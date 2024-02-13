@@ -1,0 +1,136 @@
+.product_listing_section .product_content .product_heading{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.product_listing_section .product_content .product_para{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: justify;
+    margin-bottom: 22px;
+}
+
+.product_listing_section .product_btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_listing_section .product_btns .product_price_btn{
+    outline-color: #3AB286;
+    outline-style: dashed;
+    width: 48%;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: center;
+    padding: 5px 0px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #3AB286;
+}
+
+.product_listing_section .product_btns .product_add_to_cart_btn {
+    display: inline-block;
+    width: 48%;
+    background-color: #3AB286;
+    padding: 11px 0px;
+    border-radius: 7px;
+    outline-color: #3AB286;
+    outline-style: auto;
+    text-align: center;
+    color: #fff;
+}
+
+
+
+
+@media (max-width: 1024px){
+    .banner_section{
+        padding-top: 24%;
+        /* padding-bottom: 12px; */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navbar{
+        padding: 15px 15px;
+        background-color: transparent !important;
+    }
+
+    .navbar-nav{
+        background-color: #2D9BA8;
+        padding-top: 12px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .navigationbar_right_icons{
+        background-color: #2D9BA8;
+        padding-bottom: 14px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .dropdown-item{
+        color: #fff !important;
+    }
+
+    .dropdown-divider{
+        border-top: 1px solid #309da8 !important;
+    }
+
+    .navbar-nav .dropdown-menu{
+        background-color: #35b1bd;
+        font-size: 12px;
+    }
+
+    .navbar-collapse.collapse.show{
+        margin-top: 10px;
+    }
+
+    .navbar-toggler:focus {
+        text-decoration: none;
+        outline: none !important;
+    }
+
+    .banner_section {
+        padding-top: 157px;
+        padding-bottom: 41px;
+    }
+
+    .user_img{
+        text-align: center !important;
+    }
+
+    .user_title{
+        text-align: center;
+    }
+
+    .user_bio_story{
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 425px){
+    .banner_section .banner_para{
+        font-size: 12px;
+    }
+
+    .second_square{
+        right: 22px;
+    }
+
+    .forth_square{
+        right: 17px;
+    }
+}
+
+@media (max-width: 320px){
+    .user_img img{
+        height: 400px;
+    }
+}

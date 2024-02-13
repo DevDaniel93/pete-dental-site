@@ -1,0 +1,20 @@
+/* about-us-bk.png */
+.aboutus_banner_section {
+    background-image: url("../../Assets/about-us-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* margin-top: -147px; */
+    padding-top: 187px;
+    padding-bottom: 50px;
+}
+
+.banner_heading{
+    font-size: 50px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.main_aboutus p{
+    color: #fff;
+    font-size: 15px;
+}

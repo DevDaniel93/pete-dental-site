@@ -1,0 +1,115 @@
+
+.faq_section .faq_heading{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.faq_section .faq_heading span{
+    font-weight: 600;
+    color: #3CA1AA;
+}
+
+.card-header {
+    margin: 10px 0px !important;
+    border-radius: 18px !important;
+    background-color: #fff !important;
+    list-style: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.card{
+    border: none !important;
+}
+
+.accordian_button {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.accordian_button:focus{
+    outline: none !important;
+}
+
+.btn-link:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: none;
+}
+
+.btn-link:focus {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: none;
+}
+
+.accordian_button i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3AB286;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.accordian_para{
+    display: flex;
+    align-items: center;
+}
+
+.accordain_bullet{
+    font-size: 12px;
+    outline-color: #41b288;
+    outline-style: auto;
+    height: 16px;
+    width: 16px;
+    text-align: center;
+    border-radius: 10px;
+    color: #41b288;
+}
+
+.accordain_bullet i{
+    font-size: 10px;
+}
+
+.accordian_button[aria-expanded="false"]:before {
+    content: "\2b";
+    font-family: 'FontAwesome';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3AB286;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+}
+
+.accordian_button[aria-expanded="true"]:before {
+    content: "\f068";
+    font-family: 'FontAwesome';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3AB286;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+}

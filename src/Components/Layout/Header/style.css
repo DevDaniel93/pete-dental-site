@@ -1,0 +1,177 @@
+
+body{
+    position: relative;
+}
+
+.mainHeading{
+    color: #149EE3;
+    font-size: 45px;
+}
+
+.explore_now_btn a{
+    color: #fff;
+    background-color: #3AB286;
+    height: 40px;
+    width: 125px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration-line: none;
+    border-radius: 7px;
+}
+
+
+/* HEADER CSS START */
+
+
+header {
+    padding-top: 35px;
+    position: absolute;
+    z-index: 10;
+    /* top: 84px; */
+    width: 100%;
+}
+
+.navbar {
+    border-radius: 36px;
+    padding: 15px 65px;
+    background-color: #2D9BA8;
+}
+
+.navbar-nav{
+    padding-right: 25px;
+}
+
+.nav-item{
+    padding: 0px 8px;
+}
+
+.navbar-brand{
+    color:#fff !important;
+}
+
+.navbar .nav-item .nav-link{
+    color: #fff !important;
+    font-size: 14px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(255 255 255 / 70%) !important;
+}
+
+.navigationbar_right_icons span i{
+    color: #fff;
+}
+
+/* HEADER CSS END */
+
+
+
+/* BANNER CSS START */
+/* banner-img-01.png */
+.banner_section {
+    background-image: url("../../../Assets/banner-img-01.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 13%;
+    /* margin-top: -108px; */
+    padding-bottom: 13%;
+}
+
+.banner_section .banner_para{
+    color: #fff;
+    font-size: 18px;
+}
+
+
+@media (max-width: 1024px){
+    .banner_section{
+        padding-top: 24%;
+        /* padding-bottom: 12px; */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .navbar{
+        padding: 15px 15px;
+        background-color: transparent !important;
+    }
+
+    .navbar-nav{
+        background-color: #2D9BA8;
+        padding-top: 12px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .navigationbar_right_icons{
+        background-color: #2D9BA8;
+        padding-bottom: 14px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .dropdown-item{
+        color: #fff !important;
+    }
+
+    .dropdown-divider{
+        border-top: 1px solid #309da8 !important;
+    }
+
+    .navbar-nav .dropdown-menu{
+        background-color: #35b1bd;
+        font-size: 12px;
+    }
+
+    .navbar-collapse.collapse.show{
+        margin-top: 10px;
+    }
+
+    .navbar-toggler:focus {
+        text-decoration: none;
+        outline: none !important;
+    }
+
+    .banner_section {
+        padding-top: 157px;
+        padding-bottom: 41px;
+    }
+
+    .user_img{
+        text-align: center !important;
+    }
+
+    .user_title{
+        text-align: center;
+    }
+
+    .user_bio_story{
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 425px){
+    .banner_section .banner_para{
+        font-size: 12px;
+    }
+
+    .second_square{
+        right: 22px;
+    }
+
+    .forth_square{
+        right: 17px;
+    }
+}
+
+@media (max-width: 320px){
+    .user_img img{
+        height: 400px;
+    }
+}
