@@ -1,26 +1,4 @@
-
-.loginform_section {
-    background-image: url(../images/login-bk.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* transform: translateY(-112px); */
-    padding-top: 184px;
-    /* margin-top: -151px; */
-}
-
-.loginform_section .loginform_mainHeading{
-    color: #3AB286;
-    font-size: 45px;
-    text-align: center;
-}
-
-.loginform_section .main_login_form {
-    background-image: url(../images/form-bk.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 20px 35px;
-    border-radius: 10px;
-}
+ 
 
 .loginform_section .main_login_form .form_para{
     font-size: 12px;

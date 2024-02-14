@@ -1,0 +1,696 @@
+/*  
+.mainHeading{
+    color: #149EE3;
+    font-size: 45px;
+} */
+
+.explore_now_btn a{
+    color: #fff;
+    background-color: #3AB286;
+    height: 40px;
+    width: 125px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration-line: none;
+    border-radius: 7px;
+}
+
+
+/* HEADER CSS START */
+
+
+header {
+    padding-top: 35px;
+    position: absolute;
+    z-index: 10;
+    /* top: 84px; */
+    width: 100%;
+}
+
+.navbar {
+    border-radius: 36px;
+    padding: 15px 65px;
+    background-color: #2D9BA8;
+}
+
+.navbar-nav{
+    padding-right: 25px;
+}
+
+.nav-item{
+    padding: 0px 8px;
+}
+
+.navbar-brand{
+    color:#fff !important;
+}
+
+.navbar .nav-item .nav-link{
+    color: #fff !important;
+    font-size: 14px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgb(255 255 255 / 70%) !important;
+}
+
+.navigationbar_right_icons span i{
+    color: #fff;
+}
+
+/* HEADER CSS END */
+
+
+
+/* BANNER CSS START */
+
+.banner_section {
+    background-image: url(../../Assets/banner-img-01.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 13%;
+    /* margin-top: -108px; */
+    padding-bottom: 13%;
+}
+
+.banner_section .banner_para{
+    color: #fff;
+    font-size: 18px;
+}
+
+
+/* BANNER CSS END */
+
+
+
+/* FOOTER SECTION CSS START */
+
+.footer_section{
+    background-image: url("../../Assets/footer-bk.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 45px;
+}
+
+.footer_section .quicklinks_main{
+    padding-top: 10px;
+}
+
+.footer_section .footer_title{
+    font-size: 30px;
+    color: #fff;
+}
+
+.footer_section .footer_subtitle{
+    color: #fff;
+    font-size: 18px;
+}
+
+.footer_section .aboutus_description {
+    font-size: 12px;
+    text-align: justify;
+    font-weight: 200;
+    color: #fff;
+    width: 70%;
+}
+
+.footer_section .footer_social_icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer_section .footer_social_icons .footer_icon{
+    height: 32px;
+    width: 32px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 20px;
+    color: #204E7F;
+}
+
+.footer_section .quick_links_list{
+    list-style-type: none;
+    padding: 0;
+    font-size: 12px;
+}
+
+.footer_section .quick_links_list li{
+    padding: 5px 0px;
+}
+
+.footer_section .quick_links_list li a{
+    color: #fff;
+    font-weight: 200;
+}
+
+.footer_section .contact_list{
+    display: flex;
+    align-items: baseline;
+    gap: 10px
+}
+
+.footer_section .contact_list .contact_icon{
+    height: 30px;
+    width: 30px;
+    background-color: #2D9BA8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.footerbar_section{
+    display: flex;
+    align-items: baseline;
+    background-color: #1a1a1a;
+    padding: 10px 0px;
+    justify-content: space-evenly;
+}
+
+.footerbar_section .copyright-text{
+    font-size: 12px;
+}
+
+.footerbar_section .copyright-text span{
+    font-size: 14px;
+    font-weight: 700;
+    color: #62b768;
+}
+
+.footer_section .footer_logo_img img{
+    width: 131px;
+    height: 40px;
+}
+
+.footer_section .scroll_up_control button{
+    height: 30px;
+    width: 30px;
+    background-color: #62b768;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border-radius: 20px;
+    color: #ffffff;
+    border: none;
+}
+
+.footer_section .scroll_up_control button:focus{
+    outline: 0;
+}
+
+.footer_section .footer_end{
+    padding: 10px 0px;
+    border-top: 1px solid #aeaeae;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+.footer_section .footer_end p span {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* FOOTER SECTION CSS END */
+
+
+
+/* LOGIN FORM SECTION CSS START */
+
+.loginform_section {
+    background-image: url("../../Assets/login-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* transform: translateY(-112px); */
+    padding-top: 184px;
+    /* margin-top: -151px; */
+}
+
+.loginform_section .loginform_mainHeading{
+    color: #3AB286;
+    font-size: 45px;
+    text-align: center;
+}
+
+.loginform_section .main_login_form {
+    background-image: url("../../Assets/form-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px 35px;
+    border-radius: 10px;
+}
+
+.loginform_section .main_login_form .form_para{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.input_icon{
+    color: #41b288;
+    font-size: 18px;
+}
+
+.email_label{
+    font-weight: 600;
+    font-size: 16px;
+    color: #41b288;
+}
+
+.input_with_icon{
+    display: flex;
+    align-items: baseline;
+    padding: 0px 10px;
+    outline-color: #41b288;
+    outline-style: dashed;
+}
+
+.form_email_field{
+    border: none !important;
+    background-color: transparent !important;
+    outline: 0;
+}
+
+.form_email_field:focus{
+    outline: 0 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.password_label{
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+
+.password_with_icon{
+    display: flex;
+    align-items: baseline;
+    padding: 2px 12px;
+    border: none;
+    background-color: #fff;
+}
+
+.lock_icon{
+    font-size: 16px;
+    color: #7c7c7c;
+}
+
+.form_password_field{
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.form_password_field:focus{
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.forgot_password{
+    color: #747474;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.for_other_logins{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line{
+    width: 40%;
+    background-color: #bcbcbc;
+    height: 1px;
+}
+
+.or_between{
+    font-size: 19px;
+    padding: 0px 10px;
+    font-weight: 500;
+    color: #33a64c;
+}
+
+.with_other_account{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background-color: #fff;
+    padding: 3px 0px;
+    border: 1px solid #2D9BA8;
+}
+
+.account_logo img{
+    height: 35px;
+    width: 35px;
+}
+
+.facebook_logo img{
+    height: 25px;
+    width: 25px;
+}
+
+.account_link{
+    color: #33a64c;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.register_btn{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.register_btn a{
+    color: #33a64c;
+}
+
+/* .form_email_field::placeholder{
+    font-size: 16px;
+    padding-left: 26px;
+} */
+
+/* LOGIN FORM SECTION CSS END */
+
+
+
+/* ABOUT US CSS START */
+
+.aboutus_banner_section {
+    background-image: url("../../Assets/about-us-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* margin-top: -147px; */
+    padding-top: 187px;
+    padding-bottom: 50px;
+}
+
+.banner_heading{
+    font-size: 50px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.main_aboutus p{
+    color: #fff;
+    font-size: 15px;
+}
+
+/* ABOUT US CSS END */
+
+
+
+/* USER BIO SECTION CSS START */
+
+/* .user_bio_section{
+    padding: 60px 0px;
+} */
+
+.user_bio_section .row{
+    padding: 60px 0px;
+}
+
+
+.user_bio_section .user_title{
+    font-weight: 200;
+}
+
+.user_bio_section .user_title span{
+    font-weight: 600;
+}
+
+.user_bio_section .user_bio_story{
+    font-weight: 200;
+}
+
+.user_img img {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    height: 475px;
+}
+
+.user_para{
+    line-height: 29px;
+    color: #222222;
+}
+
+.first_square {
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    position: absolute;
+    right: 197px;
+    top: 55px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.second_square{
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    position: absolute;
+    right: 0px;
+    bottom: 55px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.user_section_bg{
+    background-image: url("../../Assets/user-img-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.third_square {
+    position: absolute;
+    height: 46px;
+    width: 50px;
+    bottom: 132px;
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.forth_square {
+    position: absolute;
+    height: 59px;
+    width: 60px;
+    bottom: 56px;
+    right: -21px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.fifth_square{
+    position: absolute;
+    height: 59px;
+    width: 60px;
+    bottom: 56px;
+    left: 27%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+/* USER BIO SECTION CSS END */
+
+
+
+
+/* FAQ SECTION CSS START */
+
+.faq_section .faq_heading{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.faq_section .faq_heading span{
+    font-weight: 600;
+    color: #3CA1AA;
+}
+
+.card-header {
+    margin: 10px 0px !important;
+    border-radius: 18px !important;
+    background-color: #fff !important;
+    list-style: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.card{
+    border: none !important;
+}
+
+.accordian_button {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.accordian_button:focus{
+    outline: none !important;
+}
+
+.btn-link:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: none;
+}
+
+.btn-link:focus {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: none;
+}
+
+.accordian_button i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3AB286;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.accordian_para{
+    display: flex;
+    align-items: center;
+}
+
+.accordain_bullet{
+    font-size: 12px;
+    outline-color: #41b288;
+    outline-style: auto;
+    height: 16px;
+    width: 16px;
+    text-align: center;
+    border-radius: 10px;
+    color: #41b288;
+}
+
+.accordain_bullet i{
+    font-size: 10px;
+}
+
+.accordian_button[aria-expanded="false"]:before {
+    content: "\2b";
+    font-family: 'FontAwesome';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3AB286;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+}
+
+.accordian_button[aria-expanded="true"]:before {
+    content: "\f068";
+    font-family: 'FontAwesome';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3AB286;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+}
+
+
+/* FAQ SECTION CSS END */
+
+
+/* PRODUCT LISTING CSS START */
+
+.product_listing_section .product_content .product_heading{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.product_listing_section .product_content .product_para{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: justify;
+    margin-bottom: 22px;
+}
+
+.product_listing_section .product_btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_listing_section .product_btns .product_price_btn{
+    outline-color: #3AB286;
+    outline-style: dashed;
+    width: 48%;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: center;
+    padding: 5px 0px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #3AB286;
+}
+
+.product_listing_section .product_btns .product_add_to_cart_btn {
+    display: inline-block;
+    width: 48%;
+    background-color: #3AB286;
+    padding: 11px 0px;
+    border-radius: 7px;
+    outline-color: #3AB286;
+    outline-style: auto;
+    text-align: center;
+    color: #fff;
+}
+
+/* PRODUCT LISTING CSS END */
+
+
+/* NEW CSS */
+
+.second_banner_section{
+    background-image: url("../../Assets/banner-img-02.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 13%;
+    padding-bottom: 13%;
+}
+
+.second_banner_section .banner_para{
+    color: #fff;
+    font-size: 18px;
+}
+
+.explore_now_btn a:hover{
+    color: #fff !important;
+    text-decoration: none !important;
+}

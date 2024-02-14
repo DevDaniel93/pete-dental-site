@@ -1,19 +1,27 @@
-import React  from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import './style.css'
-export function CustonButton(props){
-    return(
-        <section class="loginform_section pb-5">
-        <Container>
-        <div class="form-group">
-        {props?.label && <label  htmlFor={props?.id} className={props?.labelClass}>{props?.label}<span>{props?.required ? '*' : ''}</span></label>}
- 
-        <div class="password_with_icon">
-            <span class="lock_icon"><i class="fa-solid fa-lock"></i></span>
-            <input type={props?.type}  value={props.value} name={props?.name}  required={props?.required} className={props?.inputClass} id={props.id} placeholder={props.placeholder}/>
-        </div>
-      </div>
-      </Container>
-      </section>
+export function CustonInput(props) {
+    return (
+        <section className=" ">
+            <Container>
+                {/* <div className="form-group"> */}
+
+{/* input_with_icon input_icon*/}
+                    <div className="form-group">
+                        <label for={props?.id} className={props?.labelClass}>{props.label}</label>
+                        <div className={props?.input_icon}>
+                            <span className={props?.classiconname}><i className={props?.classicon}></i></span>
+                            <input type={props?.type} value={props.value} className="form-control form_password_field" aria-describedby={props?.describedby} name={props?.name} required={props?.required} id={props.id} placeholder={props.placeholder} 
+                            
+                            
+                            onChange={props?.onChange} />
+
+
+                        </div>
+                    </div>
+                {/* </div> */}
+            </Container>
+        </section>
     )
 }

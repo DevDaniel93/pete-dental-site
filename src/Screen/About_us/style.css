@@ -1,0 +1,122 @@
+
+
+
+/* LOGIN FORM SECTION CSS START */
+ 
+
+/* ABOUT US CSS START */
+
+.aboutus_banner_section {
+    background-image: url("../../Assets/about-us-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* margin-top: -147px; */
+    padding-top: 187px;
+    padding-bottom: 50px;
+}
+
+.banner_heading{
+    font-size: 50px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.main_aboutus p{
+    color: #fff;
+    font-size: 15px;
+}
+
+/* ABOUT US CSS END */
+
+
+
+/* USER BIO SECTION CSS START */
+
+/* .user_bio_section{
+    padding: 60px 0px;
+} */
+
+.user_bio_section .row{
+    padding: 60px 0px;
+}
+
+
+.user_bio_section .user_title{
+    font-weight: 200;
+}
+
+.user_bio_section .user_title span{
+    font-weight: 600;
+}
+
+.user_bio_section .user_bio_story{
+    font-weight: 200;
+}
+
+.user_img img {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    height: 475px;
+}
+
+.user_para{
+    line-height: 29px;
+    color: #222222;
+}
+
+.first_square {
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    position: absolute;
+    right: 197px;
+    top: 55px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.second_square{
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    position: absolute;
+    right: 0px;
+    bottom: 55px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.user_section_bg{
+    background-image: url("../../Assets/user-img-bk.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.third_square {
+    position: absolute;
+    height: 46px;
+    width: 50px;
+    bottom: 132px;
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.forth_square {
+    position: absolute;
+    height: 59px;
+    width: 60px;
+    bottom: 56px;
+    right: -21px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+.fifth_square{
+    position: absolute;
+    height: 59px;
+    width: 60px;
+    bottom: 56px;
+    left: 27%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 7px 8px 8px;
+}
+
+/* USER BIO SECTION CSS END */
+
+
+ 
