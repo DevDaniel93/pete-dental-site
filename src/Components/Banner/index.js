@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 export function Banner (props) {
     return(
         <section class="aboutus_banner_section">
-        <Container>
+        {/* <Container> */}
             <div class="row">
                 <div class="col-md-10 mx-auto">
                     <div class="main_aboutus text-center">
@@ -19,7 +19,7 @@ export function Banner (props) {
                     </div>
                 </div>
             </div>
-        </Container>
+        {/* </Container> */}
     </section>
     )
 }

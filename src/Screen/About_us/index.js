@@ -11,7 +11,7 @@ import product_img3 from '../../Assets/product-img-03.png'
  
 import { About_CARD2 } from '../../Components/About2_CARD'
 import { About_Card } from '../../Components/About_Card'
-import { Card } from '../../Components/Product_Card/index'
+import { Card } from '../../Components/ProductCard/index'
 import { Container } from "react-bootstrap";
 import { UserLayout } from "../../Components/Layout/UserLayout";
 import { Banner } from '../../Components/Banner'

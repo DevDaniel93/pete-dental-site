@@ -1,6 +1,6 @@
 
 
-import { Card } from '../../Components/Product_Card/index'
+import { Card } from '../../Components/ProductCard/index'
 import { Container } from "react-bootstrap";
 import { UserLayout } from "../../Components/Layout/UserLayout";
 import { Banner } from '../../Components/Banner'

@@ -1,6 +1,6 @@
 import { CustonButton } from '../../Components/CustonButton'
-import {useState} from 'react'
-import { Card } from '../../Components/Product_Card/index'
+import {useState , useEffect} from 'react'
+import { Card } from '../../Components/ProductCard/index'
 import { Container } from "react-bootstrap";
 import { UserLayout } from "../../Components/Layout/UserLayout";
 import { Banner } from '../../Components/Banner'
@@ -17,13 +17,69 @@ export const Loginpage = () => {
     });
 
 
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+
+    //     try {
+    //         const data = await Login(formData); 
+    //         return data
+    //     } catch (error) {
+    //         console.error('Error during login:', error);
+    //     }
+    // };
+
+
+    // const handleSubmit = async (event, formData) => {
+    //     event.preventDefault();
+    
+    //     try {
+    //         const data = await Login(formData);
+    //         return data;
+    //     } catch (error) {
+    //         console.error('Error during login:', error);
+    //     }
+    // };
+
+    useEffect(() => {
+        document.title = 'Project Camp | Login';
+    }, [])
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+        
+        const formDataMethod = new FormData();
+        formDataMethod.append('email', formData.email);
+        formDataMethod.append('password', formData.password);
+        document.querySelector('.loaderBox').classList.remove("d-none");
+ 
+        const apiUrl = `https://custom3.mystagingserver.site/Pete-Cardamone-Dental/public/api/user-login`;
+
 
         try {
-            const data = await Login(formData); 
+            event.preventDefault();
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                body: formDataMethod
+            });
+
+            if (response.ok) {
+               
+                const responseData = await response.json();
+                localStorage.setItem('login' , responseData.data.token );
+                localStorage.setItem('role' , responseData.data.role );
+
+                document.querySelector('.loaderBox').classList.add("d-none");
+                // navigate('/dashboard')
+                
+            } else {
+                document.querySelector('.loaderBox').classList.add("d-none");
+                alert('Invalid Credentials')
+
+                console.error('Login failed');
+            }
         } catch (error) {
-            console.error('Error during login:', error);
+            document.querySelector('.loaderBox').classList.add("d-none");
+            console.error('Error:', error);
         }
     };
 
@@ -39,13 +95,13 @@ export const Loginpage = () => {
                             <div class="col-sm-12 col-lg-5 mx-auto">
 
                                 <AuthLayout heading="Pete Cardamone" text="WELCOME! SIGNIN TO CONTINUE" para="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's" >
-                                <form onSubmit={handleSubmit}> 
+                                <form onSubmit={handleSubmit}>
                                     <CustonInput
                                         input_icon="input_with_icon"
                                         classiconname="input_icon"
 
                                         classicon="fa-solid fa-at"
-                                        value="" 
+                                        value={formData.value} 
                                         label="Email" type="email" labelClass='login_form_email'
                                         aria_describedby="emailHelp"
                                         inputClass='form-control form_email_field' name="email" required="required" id="login_form_email" placeholder="Enter Your Email"
@@ -57,7 +113,7 @@ export const Loginpage = () => {
                                     <CustonInput label="password" type="pasword" labelClass='password_label'
                                         classiconname="lock_icon"
                                         input_icon="password_with_icon"
-                                        value={props.value} 
+                                        value={formData.value} 
                                         classicon="fa-solid fa-lock"
                                         inputClass='form-control form_password_field' name="password" required="required" className="input_with_icon" id="login_form_password" placeholder="placeholder"
                                         aria-describedby=""
@@ -66,9 +122,11 @@ export const Loginpage = () => {
                                             console.log(event.target.value);
                                         }}
                                     />
+                                    <div>
                                     <CustonButton
-                                        type="submit" classbtn="btn btn-success w-100 mt-3" btn_text="Log In" />
+                                          type='submit' classbtn="btn btn-success w-100 mt-3" btn_text="Log In" />
 
+</div>
 </form>
                                 </AuthLayout>
                             </div>

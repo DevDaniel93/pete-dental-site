@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 
 const LogoutData = localStorage.getItem('login');
 
 
-
+console.log("LogoutData" , LogoutData)
 
 
 export const Login = async (formData) => {
+    const navigate = useNavigate()
     const formDataMethod = new FormData();
     formDataMethod.append('email', formData.email);
     formDataMethod.append('password', formData.password);
@@ -14,7 +16,7 @@ export const Login = async (formData) => {
     
     document.querySelector('.loaderBox').classList.remove("d-none");
 
-    try {
+    try { 
         const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/user-login`, {
             method: 'POST',
             body: formDataMethod
@@ -23,10 +25,10 @@ export const Login = async (formData) => {
         const response = await res.json();
 
         if (response.ok) {
-            localStorage.setItem('login', response.data.token);
+            localStorage.setItem('login', '60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9');
             console.log('Login Response:', response);
             document.querySelector('.loaderBox').classList.add("d-none");
-            navigate('/dashboard');
+            navigate('/hone');
         } else {
             document.querySelector('.loaderBox').classList.add("d-none");
             alert('Invalid Credentials');
@@ -56,18 +58,20 @@ export const Login = async (formData) => {
 export const Get_all_product = async () => {
 
     try {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/admin/product-listing`,
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/product-listing`,
             {
                 method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${LogoutData}`
-                },
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json',
+                //     // 'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
+                // },
             });
         const productData = await res.json();
+        console.log("productData" ,productData)
         const data = productData
-        return data;
+        console.log("LogoutData data"  , data)
+        return data?.data;
     } catch (error) {
         console.log('Error in getting all products (service) =>', error)
     }
@@ -75,4 +79,98 @@ export const Get_all_product = async () => {
 }
 
 
+// https://custom3.mystagingserver.site/Pete-Cardamone-Dental/public/api/admin/category-listing
 
+
+// https://custom3.mystagingserver.site/Pete-Cardamone-Dental/public/api/checkout
+
+
+
+
+
+
+// export const checkout = async () => {
+
+//     try {
+//         const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/checkout`,
+//             {
+//                 method: 'GET',
+//                 // headers: {
+//                 //     'Accept': 'application/json',
+//                 //     'Content-Type': 'application/json',
+//                 //     'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
+//                 // },
+//             });
+//         const catigoryData = await res.json();
+//         console.log("procatigoryDataductData" ,catigoryData)
+//         const data = catigoryData
+//         console.log("LogoutData data"  , data)
+//         return data?.data;
+//     } catch (error) {
+//         console.log('Error in getting all products (service) =>', error)
+//     }
+
+// }
+
+export const Get_all_category = async () => {
+
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/category-listing`,
+            {
+                method: 'GET',
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
+                // },
+            });
+        const catigoryData = await res.json();
+        console.log("procatigoryDataductData" ,catigoryData)
+        const data = catigoryData
+        console.log("LogoutData data"  , data)
+        return data?.data;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}
+
+
+export const Checkout = async (formData) => {
+    const navigate = useNavigate()
+    // const formDataMethod = new FormData();
+    // formDataMethod.append('email', formData.email);
+    // formDataMethod.append('password', formData.password);
+
+    const formDataMethod = new FormData();
+    for (const key in formData) {
+        formDataMethod.append(key, formData[key]);
+    }
+
+    console.log(formData);
+    
+    document.querySelector('.loaderBox').classList.remove("d-none");
+
+    try { 
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/checkout`, {
+            method: 'POST',
+            body: formDataMethod
+        });
+
+        const response = await res.json();
+
+        if (response.ok) {
+            localStorage.setItem('login', '60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9');
+            console.log('Login Response:', response);
+            document.querySelector('.loaderBox').classList.add("d-none");
+            navigate('/hone');
+        } else {
+            document.querySelector('.loaderBox').classList.add("d-none");
+            alert('Invalid Credentials');
+            console.error('Login failed');
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        document.querySelector('.loaderBox').classList.add("d-none");
+    }
+};
