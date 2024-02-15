@@ -24,7 +24,7 @@ export function Cards (props) {
                         <div className="product_content">
 
                             <h2 className="product_heading">{props.heading}</h2>
-                            <span className="product_price_btn">${props.price}</span>   
+
                             <p className="product_para">
                                 {props.descripction}
                             </p>
@@ -39,9 +39,9 @@ export function Cards (props) {
                             {/* <CustonButton className="product_add_to_cart_btn"
                                 props={props.text}
                             /> */}
-                           
+                            <span className="product_price_btn">${props.price}</span>                              
                             <button  className="product_add_to_cart_btn"   onClick={props?.onClick}>{props?.text}</button>
-                            <Link  className="product_add_to_cart_btn"  to={props?.to}  >{props?.viewtext}</Link>
+                            {/* <Link  className="product_add_to_cart_btn"  to={props?.to}  >{props?.viewtext}</Link> */}
                         </div>
 
                     </div>
