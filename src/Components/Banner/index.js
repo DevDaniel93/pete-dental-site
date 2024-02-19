@@ -5,21 +5,21 @@ import { Container } from "react-bootstrap";
 
 export function Banner (props) {
     return(
-        <section class="aboutus_banner_section">
-        {/* <Container> */}
-            <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <div class="main_aboutus text-center">
+        <section className="aboutus_banner_section">
+        <div className="container">
+        <div className="row">
+                <div className="col-md-12">
+                    <div className="main_aboutus text-center">
 
-                        <h1 class="banner_heading">{props.heading}</h1>
-                        <p class="m-0">{props.descripction}</p>
+                        <h1 className="banner_heading">{props.heading}</h1>
+                        <p className="m-0">{props.descripction}</p>
  
 
 
                     </div>
                 </div>
             </div>
-        {/* </Container> */}
+        </div>
     </section>
     )
 }

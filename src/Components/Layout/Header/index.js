@@ -1,28 +1,52 @@
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { logo, userImage, mtech } from './../../../Assets/images/'
 
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Get_all_category } from '../../../Services/index'
-// import { useNavigate } from "react-router-dom";
-// import {
-//   faBell,
-//   faUser,
-//   faBars,
-//   faEllipsisV,
-//   faSignOut,
-// } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBell,
+  faUser,
+  faBars,
+  faEllipsisV,
+  faSignOut,
+} from "@fortawesome/free-solid-svg-icons";
 
-// import { notifications } from "../../../Config/Data";
-
+import userImage from '../../../Assets/userImage.png'
 import "./style.css";
 
 
 export const Header = (props) => {
+  const login = localStorage.getItem('login');
 
+  const handleRedirect = () => {
+    const LogoutData = localStorage.getItem('login');
+    fetch(`https://custom3.mystagingserver.site/Pete-Cardamone-Dental/public/api/logout`,
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${LogoutData}`
+        },
+      },
+    )
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        console.log(data)
+        localStorage.removeItem('login');
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
 
-  //   const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [all_category, setAll_category] = useState([]);
   useEffect(() => {
@@ -37,56 +61,106 @@ export const Header = (props) => {
 
     fetchData();
   }, []);
+
+ 
+
+  
+
   console.log("all_category", all_category)
   return (
     <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
 
-            <nav class="navbar navbar-expand-lg navbar-light">
-              <Link class="navbar-brand" to={"#"}>Pete Cardamone</Link>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-light">
+              <Link className="navbar-brand" to={"/home"}>Pete Cardamone</Link>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
 
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <Link class="nav-link" to={"/home"}>Home <span class="sr-only">(current)</span></Link>
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav ml-auto pr-0">
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/home"}>Home <span className="sr-only">(current)</span></Link>
                   </li>
 
-                  <li class="nav-item dropdown">
-                    <Link class="nav-link dropdown-toggle" href="products" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <li className="nav-item dropdown">
+                    <Link className="nav-link dropdown-toggle" href="products" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Products
                     </Link>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                       {
                         all_category?.map((data) => (
-                          <Link class="dropdown-item" to={`/${data?.slug}`}> {data?.name}</Link >
+                          <Link className="dropdown-item" to={`/${data?.slug}`}> {data?.name}</Link >
 
                         ))}
-                      {/* <Link class="dropdown-item" to={"/3D-products-listing"} >3D Printed Models</Link>}
-                                    <Link class="dropdown-item" to={"/sports-product-listing"}>Sports Mouth Guards</Link>
-                                    <div class="dropdown-divider"></div>
-                                    <Link class="dropdown-item" to={"/night-product-listing"}  >Night Mouth Guards</Link> */}
+                      
                     </div>
                   </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" to={"/aboutuspage"}  >About Us</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/aboutuspage"}  >About Us</Link>
                   </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" to={"/contact_us"}   >Contact Us</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/contact_us"}   >Contact Us</Link>
                   </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" to={"/faqpage"}  >FAQ's</Link>
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/faqpage"}  >FAQ's</Link>
                   </li>
                 </ul>
 
-                <div class="navigationbar_right_icons">
-                  <span><Link to={"#"}><i class="fa-solid fa-cart-shopping pl-2 pr-1"></i></Link></span>
-                  <span><Link to={"/loginpage"}><i class="fa-regular fa-user px-2"></i></Link></span>
+                <div className="navigationbar_right_icons">
+                  <span><Link to={"/cart"}><i className="fa-solid fa-cart-shopping pl-2 pr-1"></i></Link></span>
+                  {/* <span><Link to={"/loginpage"}><i className="fa-regular fa-user px-2"></i></Link></span> */}
+
+
+
+
+
+
+
+                  {!login ? (
+                    // <button type="button" className='w-100'>
+                    //   <Link className="no-link-decoration" id='nav-link' style={{ textDecorationStyle: 'none' }} to="/login" type="button">
+                    //     <i className="fa fa-user-circle-o" aria-hidden="true"></i> Login / Signup
+                    //   </Link>
+                    // </button>
+                    <span><Link to={"/loginpage"}><i className="fa-regular fa-user px-2"></i></Link></span> 
+                  ) :
+                    (
+                      <>
+
+                        <Dropdown className="userDropdown">
+                          <Dropdown.Toggle
+                            variant="transparent"
+                            className="notButton toggleButton"
+                          >
+                            <div className="userImage">
+                              <img
+                                src={userImage}
+                                alt=""
+                                className=" "
+                              />
+                            </div>
+
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu className="userMenu" align="end">
+
+                            <Link to="#" className="userMenuItem" onClick={handleRedirect}>
+                              <FontAwesomeIcon
+                                className="me-1 yellow-text"
+                                icon={faSignOut}
+
+                              />{" "}
+                              Logout
+                            </Link>
+                          </Dropdown.Menu>
+                        </Dropdown>
+
+
+                      </>
+                    )}
                 </div>
 
               </div>

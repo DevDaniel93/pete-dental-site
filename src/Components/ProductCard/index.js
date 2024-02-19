@@ -3,6 +3,8 @@ import React from "react";
 import { product_img } from './../../Assets/product-img-01.png'
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Cards (props) {
     return (
@@ -36,7 +38,7 @@ export function Cards (props) {
 
                         <div className="product_btns">
 
-                            {/* <CustonButton className="product_add_to_cart_btn"
+                            {/* <CustomButton className="product_add_to_cart_btn"
                                 props={props.text}
                             /> */}
                             <span className="product_price_btn">${props.price}</span>                              
@@ -48,6 +50,7 @@ export function Cards (props) {
                 </div>
 
             </Container>
+            <ToastContainer />
         </section>
         // <div>Hello</div>
     )

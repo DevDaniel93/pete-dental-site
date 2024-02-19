@@ -8,13 +8,9 @@ export const UserLayout = (props) => {
   return (
     <>
       <Header   />
-      {/* <Sidebar sideClass={sideBarClass} /> */}
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12 p-0">
-            <div >{props.children}</div>
-          </div>
-        </div>
+      {/* <Sidebar sideclassName={sideBarClass} /> */}
+      <div className="mainApp">
+        {props.children}
       </div>
       <Footer   />
     </>

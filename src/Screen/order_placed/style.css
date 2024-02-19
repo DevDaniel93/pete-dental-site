@@ -1,0 +1,68 @@
+/* Order placed Css */
+
+
+.order_heading{
+    font-size: 36px;
+    font-weight: 600;
+  }
+  
+  
+  .order_check_mark{
+      color: #fff;
+      background-color: #2bb849;
+      /* height: 50px; */
+      width: 50px;
+      font-size: 36px;
+      border-radius: 25px;
+      padding-top: 8px;
+  }
+  
+  
+  .purchase_message{
+    font-size: 22px;
+  }
+  
+  
+  .continue_shopping_button{
+      background-color: #302f2f;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 10px;
+  }
+  
+  
+  .continue_shopping_button:hover{
+    color: #fff;
+  }
+  
+  
+  .order_confirmed_section{
+      height: 80vh;
+  }
+  
+  .order_details{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 10px 0px;
+    border: 1px solid #ebebeb;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  .sub_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding:8px 15px;
+    
+    border: 1px solid #ebebeb;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    width: 50%;
+    /* float: inline-end; */
+}

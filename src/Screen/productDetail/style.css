@@ -1,5 +1,190 @@
-.container {
+/* .container {
     max-width: 960px;
   }
   
-  .lh-condensed { line-height: 1.25; }
+  .lh-condensed { line-height: 1.25; } */
+
+
+/* cart_item_descripction */
+
+  /* CART PAGE CSS START */
+
+
+/* .cart_item_section{
+    padding-top: 155px;
+} */
+
+
+.cart_item_section .cart_heading{
+    font-size: 40px;
+    color: black;
+}
+
+
+.cart_item_section .row{
+    border-bottom: 1px solid black;
+}
+
+
+.cart_item_section .cart_item_details .cart_item_title{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.cart_item_section .cart_item_details .cart_item_price{
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+}
+
+
+.cart_item_section .cart_item_details .instock{
+    margin-left: 8px;
+    border-left: 1px solid;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+
+.cart_item_section .cart_item_details .select_option{
+    background-color: #fff;
+    color: black;
+    border-radius: 4px;
+    border-color: black;
+}
+
+
+.cart_item_section .cart_item_details .select_option option{
+    background-color: #fff;
+}
+
+
+.cart_item_section .cart_item_action_btn p{
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+
+.cart_item_section .cart_item_action_btn .delete_bucket{
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+
+.cart_item_section .cart_item_action_btn .delete_bucket_text{
+    font-size: 12px;
+}
+
+
+.cart_del_btn:focus{
+    outline: 0;
+}
+
+
+.cart_item_section .extra_action_btn a{
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 24px;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid;
+    padding: 10px 15px;
+}
+
+
+.cart_item_section .cart_details_info p{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cart_item_section .cart_details_info p span:nth-child(1){
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+.size_and_species{
+    font-size: 12px;
+}
+
+
+.card-header {
+    padding: 15px;
+    border-radius: 65px !important;
+}
+
+
+/* CART PAGE CSS END */
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 49px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    border: navajowhite;
+    /* cursor: pointer; */
+    background-color: #2D9BA8;
+}
+.cart_item_section .cart_item_action_btn .delete_bucket {
+    margin-right: 8px;
+    font-size: 18px;
+    color: #2D9BA8;
+}
+.cart_item_details {
+    margin-left: 59px;
+}
+
+
+.img-fluid {
+    max-width: 181%;
+    height: 129px;
+}
+
+.cart_item_detail input{
+    height: 23px;
+    width: 58px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.footer_section .quick_links_list li a {
+    color: #fff;
+    font-weight: 200;
+    text-decoration: blink;
+}
+.custom-loader {
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:8px solid;
+    border-color:#E4E4ED;
+    border-right-color: var(--primaryColor);
+    animation:s2 1s infinite linear;
+  }
+
+  body {
+    position: relative;
+  }
+  @keyframes s2 {to{transform: rotate(1turn)}}
+
+  .loaderBox {
+    position: absolute;
+    background-color: #000000c2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

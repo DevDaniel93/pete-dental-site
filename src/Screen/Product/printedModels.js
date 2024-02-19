@@ -15,11 +15,13 @@ import "./style.css";
 import { useNavigate } from 'react-router-dom';
 
 import { Get_all_product } from '../../Services/index'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const PrintedModels = () => {
     const { slug } = useParams();
     const dispatch = useDispatch();
-    // console.log('qwq', slug)
+    console.log('qwq', slug)
 
     const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
 
@@ -27,7 +29,7 @@ export const PrintedModels = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await Get_all_product();
+                const data = await Get_all_product(slug);
                 setAll_product(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -37,10 +39,16 @@ export const PrintedModels = () => {
         fetchData();
     }, []);
 
-    
-    const addcard = () =>{
-        
-    }
+    // const notification = () => {
+    //     toast.success('Order placed successfully!', {
+    //       position: toast.POSITION.TOP_RIGHT,
+    //     });
+    //   };
+      const notify = () => toast("Product added successfully");
+
+    console.log("notify" , notify)
+    const navigate = useNavigate()
+    // navigate('./productdetail')
     return (
         <>
             <UserLayout>
@@ -48,24 +56,26 @@ export const PrintedModels = () => {
                 <Banner
                     heading="3D PRINTED MODELS"
                     descripction="Revolutionize dentistry with our precision-crafted 3D printed models, setting a new standard for accuracy. Elevate patient care by embracing cutting-edge technology that guarantees a perfect fit." />
-                {all_product?.map((data) => (
-                    
-                        <Cards
-                            img={baseurl + data?.src}
-                            heading={data?.name}
-                            descripction={data?.short_description}
-                            descripction2={data?.description}
-                            price="59.34"
-                            text="Add to cart"
-                            onClick={() => dispatch(addToCart(data))}
-                            to={"/productdetail"}
-                            viewtext="View Card"
+              {all_product?.map((data, index) => (
+        <Cards
+          key={index}
+          img={baseurl + data?.src}
+          heading={data?.name}
+          descripction={data?.short_description}
+          descripction2={data?.description}
+          price="59.34"
+          text="Add to cart"
+        //   onClick={notify}
+          onClick={() => (dispatch(addToCart(data ) )  , notify()) }
+          to={"/productdetail"}
+          viewtext="View Card"
+        />
+      ))}
+                           
                           
-                        />
-                  
-                ))}
+                   
 
-
+<ToastContainer />
 
 
             </UserLayout>

@@ -1,6 +1,6 @@
 
 .loginform_section {
-    background-image: url(../../Assets/login-bk.png);
+    background-image: url(../../../Assets/login-bk.png);
     background-size: cover;
     background-repeat: no-repeat;
     /* transform: translateY(-112px); */
@@ -15,7 +15,7 @@
 }
 
 .loginform_section .main_login_form {
-    background-image: url(../../Assets/form-bk.png);
+    background-image: url(../../../Assets/form-bk.png);
     background-size: cover;
     background-repeat: no-repeat;
     padding: 20px 35px;
@@ -152,3 +152,16 @@
     font-size: 16px;
     padding-left: 26px;
 } */
+
+
+.loaderBox {
+    position: absolute;
+    background-color: #000000c2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

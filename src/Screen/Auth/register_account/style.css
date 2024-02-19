@@ -1,0 +1,167 @@
+
+.loginform_section {
+    background-image: url(../../../Assets/login-bk.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* transform: translateY(-112px); */
+    padding-top: 184px;
+    /* margin-top: -151px; */
+}
+
+.loginform_section .loginform_mainHeading{
+    color: #3AB286;
+    font-size: 45px;
+    text-align: center;
+}
+
+.loginform_section .main_login_form {
+    background-image: url(../../../Assets/form-bk.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px 35px;
+    border-radius: 10px;
+}
+
+.loginform_section .main_login_form .form_para{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.input_icon{
+    color: #41b288;
+    font-size: 18px;
+}
+
+.email_label{
+    font-weight: 600;
+    font-size: 16px;
+    color: #41b288;
+}
+
+.input_with_icon{
+    display: flex;
+    align-items: baseline;
+    padding: 0px 10px;
+    outline-color: #41b288;
+    outline-style: dashed;
+}
+
+.form_email_field{
+    border: none !important;
+    background-color: transparent !important;
+    outline: 0;
+}
+
+.form_email_field:focus{
+    outline: 0 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.password_label{
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+
+.password_with_icon{
+    display: flex;
+    align-items: baseline;
+    padding: 2px 12px;
+    border: none;
+    background-color: #fff;
+}
+
+.lock_icon{
+    font-size: 16px;
+    color: #7c7c7c;
+}
+
+.form_password_field{
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.form_password_field:focus{
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.forgot_password{
+    color: #747474;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.for_other_logins{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line{
+    width: 40%;
+    background-color: #bcbcbc;
+    height: 1px;
+}
+
+.or_between{
+    font-size: 19px;
+    padding: 0px 10px;
+    font-weight: 500;
+    color: #33a64c;
+}
+
+.with_other_account{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background-color: #fff;
+    padding: 3px 0px;
+    border: 1px solid #2D9BA8;
+}
+
+.account_logo img{
+    height: 35px;
+    width: 35px;
+}
+
+.facebook_logo img{
+    height: 25px;
+    width: 25px;
+}
+
+.account_link{
+    color: #33a64c;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.register_btn{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.register_btn a{
+    color: #33a64c;
+}
+
+/* .form_email_field::placeholder{
+    font-size: 16px;
+    padding-left: 26px;
+} */
+
+
+.loaderBox {
+    position: absolute;
+    background-color: #000000c2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
