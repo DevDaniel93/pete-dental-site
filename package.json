@@ -1,6 +1,7 @@
 {
   "name": "pete-dental-site",
   "version": "0.1.0",
+  "homepage": "/pete-dental-site",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
