@@ -6,7 +6,7 @@ import { UserLayout } from "../../../Components/Layout/UserLayout";
 import { Banner } from '../../../Components/Banner'
 import "./style.css";
 import { AuthLayout } from '../../../Components/AuthLayout'
-import { CustonInput } from '../../../Components/CustonInput'
+import { CustomInput } from '../../../Components/CustomInput'
 // import { Faqs } from '../../../Components/Faqs'
 // import { Login } from '../../Services/index'
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +40,12 @@ export const Loginpage = () => {
             if (response.ok) {
 
                 const responseData = await response.json();
+                console.log("responseData" , responseData)
+            
                 localStorage.setItem('login', responseData.data.token);
+                localStorage.setItem('name', responseData.data.name);
+                localStorage.setItem('email', responseData.data.email);
+                
                 console.log('Login Response:', responseData);
                 document.querySelector('.loaderBox').classList.add("d-none");
                 navigate('/')
@@ -85,7 +90,7 @@ export const Loginpage = () => {
                                 <AuthLayout heading="Pete Cardamone" text="WELCOME! SIGNIN TO CONTINUE" para="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
                                     register="Don't have an Account?" accountforget="Forgot Password?" account="Rigester">
                                     <form onSubmit={handleSubmit}>
-                                        <CustonInput
+                                        <CustomInput
                                             input_icon="input_with_icon"
                                             classiconname="input_icon"
 
@@ -108,7 +113,7 @@ export const Loginpage = () => {
 
 
 
-                                        <CustonInput label="password"
+                                        <CustomInput label="password"
 
 
 

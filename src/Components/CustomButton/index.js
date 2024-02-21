@@ -8,7 +8,7 @@ export function CustomButton(props) {
     <>
       {/* <button type={props?.type} className={`customButton ${props?.variant} ${props?.className}`} onClick={props?.onClick}>{props?.text} <FontAwesomeIcon icon={props.icon} /></button> */}
 
-      <button type={props?.type} className={props?.classbtn}>{props?.btn_text}</button>
+      <button onClick={props?.onClick} type={props?.type} className={props?.classbtn}>{props?.btn_text}</button>
 
     </>
   )

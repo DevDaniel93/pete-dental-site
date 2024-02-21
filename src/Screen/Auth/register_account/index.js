@@ -6,7 +6,7 @@ import { UserLayout } from "../../../Components/Layout/UserLayout";
 // import { Banner } from '../../Components/Banner'
 import "./style.css";
 import { AuthLayout } from '../../../Components/AuthLayout'
-import { CustonInput } from '../../../Components/CustonInput'
+import { CustomInput } from '../../../Components/CustomInput'
 // import { Faqs } from '../../../Components/Faqs'
 // import { Login } from '../../Services/index'
 import { useNavigate } from 'react-router-dom';
@@ -94,7 +94,7 @@ console.log("handleSubmit , " , handleSubmit)
                                     
                                 
                                     
-                                        <CustonInput
+                                        <CustomInput
                                             input_icon="input_with_icon"
                                             classiconname="input_icon"
 
@@ -117,7 +117,7 @@ console.log("handleSubmit , " , handleSubmit)
 
 
 
-                                        <CustonInput label="password"
+                                        <CustomInput label="password"
 
 
 
@@ -138,7 +138,7 @@ console.log("handleSubmit , " , handleSubmit)
                                             onChange={handleChange}
                                         />
 
-                                        <CustonInput label="Confirm Password"
+                                        <CustomInput label="Confirm Password"
 
 
 

@@ -157,7 +157,7 @@ const cartReducer = (state = initialState, action) => {
           ...state,
           items: state.items.map(product =>
             product.id === action.payload
-              ? { ...product, quantity: product?.quantity + 1 }
+              ? { ...product, qty: product?.qty + 1 }
               : product
           ),
         };
@@ -166,7 +166,7 @@ const cartReducer = (state = initialState, action) => {
             ...state,
             items: state.items.map(product =>
               product.id === action.payload
-                ? { ...product, quantity: Math.max(1, product.quantity - 1) }
+                ? { ...product, qty: Math.max(1, product.qty - 1) }
                 : product
             ),
           };

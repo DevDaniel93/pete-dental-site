@@ -57,6 +57,10 @@
     flex-shrink: 0;
 }
 
+.sticky-top {
+    z-index: 9 !important;
+}
+
 
 @media screen and (max-width: 1200px) and (min-width: 768px) {
     .stats, .stats:not(:last-child) {
@@ -68,8 +72,24 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
     .stats, .stats:not(:last-child), .stats:nth-child(odd) {
         border-color: #fff0;
+    }
+
+    /* .mySwiper * {
+        height: 100%;
+    } */
+
+    .mySwiper section {
+        height: 440px !important;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media(min-width: 1024px) {
+    .mySwiper section {
+        height: calc(100vh - 278.9px);
     }
 }

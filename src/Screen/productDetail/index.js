@@ -1,11 +1,12 @@
 import "./style.css";
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { Banner } from "../../Components/Banner";
 // import { fetchProducts, addToCart, incrementQuantity, decrementQuantity } from '../../store/action';
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
-  incrementvariationQuantity,
+  incrementvariationQuantity, incrementQuantityCart,
+  decrementQuantityCart,
   removeFromCart,
   updateCartItem,
 } from "../../store/action";
@@ -33,7 +34,11 @@ export function ProductCheckout(product) {
   const [qty, setQty] = useState(1);
   const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
   const cartItems = useSelector((state) => state.cart.items);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    email: '',
+    name:""
+  });
+
   const handleChangeQuantity = (productid, newQuantity) => {
     dispatch(incrementvariationQuantity(productid, newQuantity));
 
@@ -95,6 +100,27 @@ export function ProductCheckout(product) {
     }));
 
   };
+  const name = localStorage.getItem('name');
+  console.log("name" , name )
+  const storedEmail = localStorage.getItem('email');
+console.log("storedEmail" , storedEmail )
+  // Update the email value in formData if it exists in localStorage
+  useEffect(() => {
+    if (storedEmail) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        email: storedEmail,
+      }));
+    }
+  }, [storedEmail]);
+  useEffect(() => {
+    if (name) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        name: name,
+      }));
+    }
+  }, [name]);
 
   const totalCartPrice = cartItems?.reduce((total, product) => {
     const productPrice = product.price || 0;
@@ -139,6 +165,8 @@ export function ProductCheckout(product) {
 
                         <div className="cart_item_detail">
                           <span className="cart_item_price">${data.price}</span>
+                          <span className="dtlqty">
+                          <span type="button" onClick={() => dispatch(incrementQuantityCart(data.id))} className="inc">+</span>
                           <input
                             type="number"
                             id={`quantity-${data.id}`}
@@ -151,21 +179,15 @@ export function ProductCheckout(product) {
                               )
                             }
                           />
+ 
+                          <span className="dec" type="button" onClick={() => dispatch(decrementQuantityCart(data.id))}>-</span>
+                      
+                          </span>
+ 
                         </div>
 
                         <div>
-                          {/* <input
-                                type="number"
-                                id={`quantity-${data.id}`}
-                                name={`quantity-${data.id}`}
-                                value={productQuantities[data.id] || data.qty}
-                                onChange={(e) =>
-                                  handleChangeQuantity(
-                                    data.id,
-                                    parseInt(e.target.value, 10)
-                                  )
-                                }
-                              /> */}
+
                         </div>
 
                         <div>
@@ -257,8 +279,9 @@ export function ProductCheckout(product) {
                           placeholder="Enter Name"
                           labelclassName="mainLabel"
                           inputclassName="mainInput"
-                          name="firstname"
-                          value={formData.firstname}
+                          name="name"
+                          value={formData.name}
+                          disabled={storedEmail ? true : false}
                           onChange={handleChange}
                           className="form-control"
                           id="firstName"
@@ -293,6 +316,8 @@ export function ProductCheckout(product) {
                       <label for="email">
                         Email <span className="text-muted">(Optional)</span>
                       </label>
+                     
+
                       <input
                         type="email"
                         required
@@ -304,6 +329,7 @@ export function ProductCheckout(product) {
                         onChange={handleChange}
                         className="form-control"
                         id="email"
+                        disabled={storedEmail ? true : false}
                       />
                       <div className="invalid-feedback">
                         {" "}
@@ -437,7 +463,7 @@ export function ProductCheckout(product) {
           <div className="container">
             <div className="emptyCart text-center py-5">
               <h4 className="mb-4">There is no product in your cart.</h4>
-               <Link className="btn text-white" to='/3d-printed-models-1'>Continue Shopping</Link>
+              <Link className="btn text-white" to='/3d-printed-models-1'>Continue Shopping</Link>
             </div>
           </div>
         )}

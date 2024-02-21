@@ -44,6 +44,13 @@
 }
 
 
+.whislist {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: red;
+}
+
 
 
 @media (max-width: 1024px){

@@ -6,6 +6,7 @@ import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Get_all_category } from '../../../Services/index'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch, useSelector } from "react-redux";
 import {
   faBell,
   faUser,
@@ -39,6 +40,8 @@ export const Header = (props) => {
       .then((data) => {
         console.log(data)
         localStorage.removeItem('login');
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
         navigate('/');
       })
       .catch((error) => {
@@ -62,9 +65,9 @@ export const Header = (props) => {
     fetchData();
   }, []);
 
- 
+  const cartItems = useSelector((state) => state.cart.items);
 
-  
+
 
   console.log("all_category", all_category)
   return (
@@ -96,7 +99,7 @@ export const Header = (props) => {
                           <Link className="dropdown-item" to={`/${data?.slug}`}> {data?.name}</Link >
 
                         ))}
-                      
+
                     </div>
                   </li>
                   <li className="nav-item">
@@ -111,13 +114,16 @@ export const Header = (props) => {
                 </ul>
 
                 <div className="navigationbar_right_icons">
+ 
+               
                   <span><Link to={"/cart"}><i className="fa-solid fa-cart-shopping pl-2 pr-1"></i></Link></span>
                   {/* <span><Link to={"/loginpage"}><i className="fa-regular fa-user px-2"></i></Link></span> */}
+                  <span className='qty'> {cartItems.length}</span>
 
 
 
 
-
+{/* full round background */}
 
 
                   {!login ? (
@@ -126,7 +132,7 @@ export const Header = (props) => {
                     //     <i className="fa fa-user-circle-o" aria-hidden="true"></i> Login / Signup
                     //   </Link>
                     // </button>
-                    <span><Link to={"/loginpage"}><i className="fa-regular fa-user px-2"></i></Link></span> 
+                    <span><Link to={"/loginpage"}><i className="fa-regular fa-user px-2"></i></Link></span>
                   ) :
                     (
                       <>
@@ -146,7 +152,10 @@ export const Header = (props) => {
 
                           </Dropdown.Toggle>
                           <Dropdown.Menu className="userMenu" align="end">
-
+                          <Link to="/myaccount" className="userMenuItem" >
+                          <i className="fa-regular fa-user px-2"></i>{" "}
+                              My Account
+                            </Link>
                             <Link to="#" className="userMenuItem" onClick={handleRedirect}>
                               <FontAwesomeIcon
                                 className="me-1 yellow-text"
@@ -155,6 +164,7 @@ export const Header = (props) => {
                               />{" "}
                               Logout
                             </Link>
+                         
                           </Dropdown.Menu>
                         </Dropdown>
 

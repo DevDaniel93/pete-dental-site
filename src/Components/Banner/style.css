@@ -69,12 +69,33 @@ header {
 /* BANNER CSS START */
 
 .banner_section {
-    background-image: url(../../Assets/banner-img-01.png);
+    background-image: url(../../Assets/banner-img-01-new.png);
     background-size: cover;
     background-repeat: no-repeat;
-    padding-top: 13%;
+    padding-top: 14%;
+    object-fit: cover;
     /* margin-top: -108px; */
-    padding-bottom: 13%;
+    padding-bottom: 14%;
+}
+
+.banner_section2 {
+    background-image: url(../../Assets/banner-img-02-new.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 14%;
+    object-fit: cover;
+    /* margin-top: -108px; */
+    padding-bottom: 14%;
+}
+
+.banner_section3 {
+    background-image: url(../../Assets/banner-img-04-new.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 14%;
+    object-fit: cover;
+    /* margin-top: -108px; */
+    padding-bottom: 14%;
 }
 
 .banner_section .banner_para{

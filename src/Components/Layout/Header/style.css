@@ -75,8 +75,11 @@ header {
     width: 44px;
 }
 
-.navigationbar_right_icons{display: flex;
-align-items: center;}
+.navigationbar_right_icons{
+    display: flex;
+align-items: center;
+position: relative;
+}
 
 
 
@@ -95,4 +98,24 @@ align-items: center;}
     inset: 0px 0px auto auto;
     transform: translate3d(0px, 58.1818px, 0px);
      padding: 0px;
+}
+
+.navigationbar_right_icons .qty {
+    background-color: aqua;
+    /* padding: 10px; */
+    /* border: 2px solid palegoldenrod; */
+    border-radius: 50%;
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    position: absolute;
+    /* top: 5px; */
+    margin-right: 21px;
+    margin-right: 47px;
+    margin-top: -26px;
+    z-index: 10;
+    left: 23px
 }

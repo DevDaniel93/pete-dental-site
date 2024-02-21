@@ -1,5 +1,5 @@
 import React from "react";
-import { CustonInput } from '../CustonInput'
+import { CustomInput } from '../CustomInput'
 import "./style.css";
 import facebook_icon from '../../Assets/facebook_icon.png'
 import google_icon from '../../Assets/google_icon.png'
@@ -23,8 +23,8 @@ export function AuthLayout(props) {
         {/* <button type="submit" className="btn btn-success w-100 mt-3">"{props?.accountstaus}"</button> */}
 
         <div className="text-right mt-2">
-          <div class="text-center mt-2">
-            <span class="register_btn">{props?.accountstaus} <Link to={"/loginpage"}>{props?.login}</Link></span>
+          <div className="text-center mt-2">
+            <span className="register_btn">{props?.accountstaus} <Link to={"/loginpage"}>{props?.login}</Link></span>
           </div>
  
           <Link to={"/forgot_password"} className="forgot_password"> {props?.accountforget}</Link>

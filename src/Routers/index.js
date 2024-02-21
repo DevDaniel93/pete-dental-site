@@ -8,6 +8,9 @@ import {ProductCheckout} from '../Screen/productDetail'
 import { PrintedModels } from "../Screen/Product/printedModels";
 import {Order_placed} from '../Screen/order_placed'
 import {Sign_up} from '../Screen/Auth/register_account'
+import {My_account} from '../Screen/my_account'
+import {Contect_us} from '../Screen/Contact_us'
+// Myaccount
 export default function AdminRouter() {
  
 
@@ -33,6 +36,9 @@ export default function AdminRouter() {
       <Route path="/cart" element={<ProductCheckout />} />
       <Route path="/order_places" element={<Order_placed />} />
       <Route path="/signuppage" element={<Sign_up />} />
+      <Route path="/myaccount" element={<My_account />} />
+      <Route path="/contact_us" element={<Contect_us />} />
+       
  
  
       </Routes>

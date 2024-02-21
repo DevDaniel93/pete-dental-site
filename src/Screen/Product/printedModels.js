@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import product_img from '../../Assets/product-img-01.png'
 import { fetchProducts, addToCart, incrementQuantity, decrementQuantity } from '../../store/action';
-
+import {
+    faBell,
+    faUser,
+    faHeart,
+    faBars,
+    faEllipsisV,
+    faSignOut,
+  } from "@fortawesome/free-solid-svg-icons";
 import product_img2 from '../../Assets/product-img-02.png'
 import {Link} from 'react-router-dom'
 import product_img3 from '../../Assets/product-img-03.png'
@@ -14,16 +21,19 @@ import { Banner } from '../../Components/Banner'
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
 
-import { Get_all_product } from '../../Services/index'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Get_all_product  , Add_wish} from '../../Services/index'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+ 
 export const PrintedModels = () => {
     const { slug } = useParams();
     const dispatch = useDispatch();
     console.log('qwq', slug)
 
     const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
+
+ 
 
     const [all_product, setAll_product] = useState([]);
     useEffect(() => {
@@ -37,13 +47,25 @@ export const PrintedModels = () => {
         };
 
         fetchData();
-    }, []);
+    }, [slug]);
 
-    // const notification = () => {
-    //     toast.success('Order placed successfully!', {
-    //       position: toast.POSITION.TOP_RIGHT,
-    //     });
-    //   };
+
+
+
+    const wish = () => toast("Add in to Wish List");
+
+
+
+    const wishdata= async (id) => {
+      try {
+          const data = await Add_wish(id);
+          // setAll_product(data);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
+  };
+
+
       const notify = () => toast("Product added successfully");
 
     console.log("notify" , notify)
@@ -63,10 +85,13 @@ export const PrintedModels = () => {
           heading={data?.name}
           descripction={data?.short_description}
           descripction2={data?.description}
+          icon="faHeart"
+
           price="59.34"
           text="Add to cart"
         //   onClick={notify}
-          onClick={() => (dispatch(addToCart(data ) )  , notify()) }
+        addwish={ () => wishdata(data?.id)}
+          onClick={() => (dispatch(addToCart(data ) )  , notify() , wishdata(data?.id)) }
           to={"/productdetail"}
           viewtext="View Card"
         />

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const LogoutData = localStorage.getItem('login');
 
 
-console.log("LogoutData" , LogoutData)
+console.log("LogoutData itm" , LogoutData)
 
 
 export const Login = async (formData) => {
@@ -61,11 +61,6 @@ export const Get_all_product = async (slug) => {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/product-listing/${slug}`,
             {
                 method: 'GET',
-                // headers: {
-                //     'Accept': 'application/json',
-                //     'Content-Type': 'application/json',
-                //     // 'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
-                // },
             });
         const productData = await res.json();
         console.log("productData" ,productData)
@@ -153,7 +148,7 @@ export const Checkout = async (  formData , cartItems) => {
 
         if (response.ok) {
             localStorage.setItem('login', '60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9');
-            console.log('Login Response:', response);
+ 
             // document.querySelector('.loaderBox').classList.add("d-none");
             navigate('/hone');
         } else {
@@ -174,14 +169,14 @@ export const Order_place = async() =>{
 
     try {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/order-detail`,
-            {
-                method: 'GET',
-                // headers: {
-                //     'Accept': 'application/json',
-                //     'Content-Type': 'application/json',
-                //     'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
-                // },
-            });
+        {
+            method: 'GET',
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json',
+            //     'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
+            // },
+        });
         const orders = await res.json();
  
         const data = orders
@@ -192,3 +187,161 @@ export const Order_place = async() =>{
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+export const Order_list = async() =>{
+    const LogoutData = localStorage.getItem('login');
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/user/order-listing`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${LogoutData}`
+            },
+        }
+    )
+
+        const orders = await res.json();
+ 
+        const data = orders
+
+        return data;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}
+
+
+ 
+
+export const Profile_view = async() =>{
+    const LogoutData = localStorage.getItem('login');
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/user/get-detail`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${LogoutData}`
+            },
+        }
+    )
+
+        const orders = await res.json();
+ 
+        const data = orders
+
+        return data;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}
+
+
+
+
+
+
+export const Profile_edit = async() =>{
+    const LogoutData = localStorage.getItem('login');
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/user/detail-edit`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${LogoutData}`
+            },
+        }
+    )
+
+        const orders = await res.json();
+ 
+        const data = orders
+
+        return data;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}
+
+
+export const Wish_list = async() =>{
+    const LogoutData = localStorage.getItem('login');
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/user/wish-list`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${LogoutData}`
+            },
+        }
+    )
+
+        const orders = await res.json();
+ 
+        const data = orders
+
+        return data;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}  
+
+
+export const Add_wish = async(id) =>{
+    const LogoutData = localStorage.getItem('login');
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}public/api/user/wish-unwish-product/${id}`,
+        {
+            method: "GET", // *GET, POST, PUT, DELETE, etc.
+            mode: "cors", // no-cors, *cors, same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${LogoutData}`,
+            },
+            redirect: "follow", // manual, *follow, error
+            referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            // body: JSON.stringify(data), // body data type must match "Content-Type" header
+        }
+    )
+
+        const orders = await res.json();
+        console.log(orders)
+        // const data = orders
+
+        return orders;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}  
+
+
+
+ 
