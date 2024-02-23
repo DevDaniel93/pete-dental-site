@@ -52,25 +52,31 @@ export const PrintedModels = () => {
 
 
 
-    const wish = () => toast("Add in to Wish List");
+    const wishlish = () => toast("Add in to Wish List");
 
+    const [wish  , setWish]  = useState(false)
 
-
-    const wishdata= async (id) => {
+    const wishdata = async (id) => {
       try {
           const data = await Add_wish(id);
-          // setAll_product(data);
+          setWish(data);
       } catch (error) {
           console.error('Error fetching data:', error);
       }
   };
-
+//   useEffect(() =>{
+//     wishdata()
+//   } , [wishdata()])
+console.log("wish"  , wish.status)
 
       const notify = () => toast("Product added successfully");
 
     console.log("notify" , notify)
     const navigate = useNavigate()
     // navigate('./productdetail')
+
+
+    console.log("all_product"  , all_product)
     return (
         <>
             <UserLayout>
@@ -89,9 +95,9 @@ export const PrintedModels = () => {
 
           price="59.34"
           text="Add to cart"
-        //   onClick={notify}
-        addwish={ () => wishdata(data?.id)}
-          onClick={() => (dispatch(addToCart(data ) )  , notify() , wishdata(data?.id)) }
+status={wish.status}
+        addwish={ () => (wishdata(data?.id) ,  wishlish()  )}
+          onClick={() => (dispatch(addToCart(data ) )   , notify() ,   wishdata(data?.id)) }
           to={"/productdetail"}
           viewtext="View Card"
         />

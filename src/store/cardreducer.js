@@ -2,7 +2,7 @@
 // const initialState = {
 //     items: [],
 //   };
-  
+
 //   const cartReducer = (state = initialState, action) => {
 //     console.log(state)
 //     switch (action.type) {
@@ -23,10 +23,10 @@
 
 //       case 'ADD_TO_CART':
 //         const { productId, variationId, quantity } = action.payload;
-  
+
 //         // Check if the product already exists in the cart
 //         const existingProductIndex = state.items.findIndex((item) => item.product_id === productId);
-  
+
 //         if (existingProductIndex !== -1) {
 //           // If the product exists, update the quantity and total price
 //           return {
@@ -71,15 +71,15 @@
 //         }
 //       default:
 //         return state;
-      
-//     }
-    
-//   };
-  
-//   export default cartReducer;
-  
 
- 
+//     }
+
+//   };
+
+//   export default cartReducer;
+
+
+
 
 
 
@@ -104,7 +104,7 @@ const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       const quantity = action.payload
-       const existingProductIndex = state.items.findIndex((item) => item.id === action.payload.id);
+      const existingProductIndex = state.items.findIndex((item) => item.id === action.payload.id);
 
       if (existingProductIndex !== -1) {
         // Product already in cart, replace quantity
@@ -118,14 +118,14 @@ const cartReducer = (state = initialState, action) => {
         };
 
 
-      //   const updatedItems = state.items.map((item, index) =>
-      //   index === existingProductIndex ? { ...item, quantity: item.quantity + action.payload.quantity, variation: [...item.variation, ...action.payload.variation] } : item
-      // );
-  
-      return {
-        ...state,
-        items: updatedItems,
-      };
+        //   const updatedItems = state.items.map((item, index) =>
+        //   index === existingProductIndex ? { ...item, quantity: item.quantity + action.payload.quantity, variation: [...item.variation, ...action.payload.variation] } : item
+        // );
+
+        return {
+          ...state,
+          items: updatedItems,
+        };
       } else {
         return {
           ...state,
@@ -134,7 +134,7 @@ const cartReducer = (state = initialState, action) => {
       }
     case 'INCREMENT_QUANTITY_VA':
       const { productId, newQuantity } = action.payload;
-      
+
       return {
         ...state,
         items: state.items.map((item) =>
@@ -142,70 +142,95 @@ const cartReducer = (state = initialState, action) => {
         ),
       };
 
-    case 'REMOVE_FROM_CART':
-      const removedProductId = action.payload;
-      
-      const removeItems = state.items.filter(item => item.id !== removedProductId);
- 
+
+
+    case 'PATIENT_NAME':
+      const { patientId, patient_name } = action.payload;
+      console.log("patient_name dis", patient_name)
       return {
         ...state,
-        items: removeItems,
+        items: state.items.map((item) =>
+          item.id === patientId ? { ...item, patient_name: patient_name } : item
+        ),
       };
 
-      case 'INCREMENT_QUANTITY_incart':
-        return {
-          ...state,
-          items: state.items.map(product =>
-            product.id === action.payload
-              ? { ...product, qty: product?.qty + 1 }
-              : product
-          ),
-        };
-        case 'DECREMENT_QUANTITY_incart':
-          return {
-            ...state,
-            items: state.items.map(product =>
-              product.id === action.payload
-                ? { ...product, qty: Math.max(1, product.qty - 1) }
-                : product
-            ),
-          };
-        
 
-    // case 'UPDATE_CART_ITEM':
-    //   const updatedCartItem = action.payload;
-    //   console.log("updatedCartItem" , updatedCartItem)
-    //   const updatedItems = state.items.map((item) =>
-    //     item.id === updatedCartItem.id
-    //       ? { ...item, ...updatedCartItem, variation: [...item.variation, ...updatedCartItem.variation] }
-    //       : item
-    //   );
-    
+
+    case 'PATIENT_FILE':
+      const { patientid, patient_file } = action.payload;
+      console.log("patient_file", patient_file)
+      console.log("patientid", patientid)
+      return {
+        ...state,
+        items: state.items.map((item) =>
+          item.id === patientid ? { ...item, patient_file: patient_file } : item
+        ),
+      };
+
+
+
+
+    // case 'REMOVE_FROM_CART':
+    //   const removedProductId = action.payload;
+
+    //   const removeItems = state.items.filter(item => item.id !== removedProductId);
+
     //   return {
     //     ...state,
-    //     items: updatedItems,
+    //     items: removeItems,
     //   };
+
+
+    case 'REMOVE_ALL_FROM_CART':
+      return {
+        ...state,
+        items: [], // This will remove all products from the cart
+      };
+
+
+    case 'INCREMENT_QUANTITY_incart':
+      return {
+        ...state,
+        items: state.items.map(product =>
+          product.id === action.payload
+            ? { ...product, qty: product?.qty + 1 }
+            : product
+        ),
+      };
+    case 'DECREMENT_QUANTITY_incart':
+      return {
+        ...state,
+        items: state.items.map(product =>
+          product.id === action.payload
+            ? { ...product, qty: Math.max(1, product.qty - 1) }
+            : product
+        ),
+      };
+    // PROUCT_Name
+
+
+
 
 
 
     case 'UPDATE_CART_ITEM':
-  const updatedCartItem = action.payload;
-  const updatedItems = state.items.map((item) =>
-    item.id === updatedCartItem.id
-      ? {
-          ...item,
-          quantity: updatedCartItem.quantity,
-          variation: updatedCartItem.variation,
-        }
-      : item
-  );
+      const updatedCartItem = action.payload;
+      const updatedItems = state.items.map((item) =>
+        item.id === updatedCartItem.id
+          ? {
+            ...item,
+            quantity: updatedCartItem.quantity,
+            variation: updatedCartItem.variation,
+          }
+          : item
+      );
 
-  return {
-    ...state,
-    items: updatedItems,
-  };
+      return {
+        ...state,
+        items: updatedItems,
+      };
 
-    
+
     default:
       return state;
   }

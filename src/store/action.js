@@ -52,13 +52,44 @@ export const decrementQuantityCart = (productId) => {
     type: 'DECREMENT_QUANTITY_incart',
     payload: productId,
   };
-}; 
+};
 export const incrementvariationQuantity = (productId, newQuantity) => ({
 
   type: 'INCREMENT_QUANTITY_VA',
   payload: { productId, newQuantity },
 });
 
+
+
+export const patient_name = (patientId, patient_name) => {
+  console.log("patient_name" , patient_name)
+  return (
+    {
+
+      type: 'PATIENT_NAME',
+      payload: { patientId, patient_name },
+    }
+  )
+}
+
+// ({
+
+//   type: 'PATIENT_NAME',
+//   payload: { patientId, patient_name },
+// });
+
+
+
+
+export const patient_file = (patientid, patient_file) => ({
+
+  type: 'PATIENT_FILE',
+  payload: { patientid, patient_file },
+});
+
+
+
+// PATIENT_FILE
 
 
 export const decrementcariationQuantity = (productId) => ({
@@ -69,9 +100,9 @@ export const updateCartItem = (updatedCartItem) => ({
   type: 'UPDATE_CART_ITEM',
   payload: updatedCartItem,
 });
-export const removeFromCart = (productId) => ({
-  type: 'REMOVE_FROM_CART',
-  payload: productId,
+ 
+export const removeFromCart = () => ({
+  type: 'REMOVE_ALL_FROM_CART',
 });
 // export const fetchProducts = () => {
 //   return async (dispatch) => {

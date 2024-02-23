@@ -103,3 +103,61 @@
                                                              </tr>
                                                            </tbody>))}
                                                          </Table>
+                                                         <Table striped bordered hover>
+                                                                    <thead>
+                                                                        <tr>
+
+                                                                            <th>Order Date </th>
+                                                                            <th>Order Number</th>
+                                                                            <th>total</th>
+                                                                            <th>Status</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    {all_product?.data?.map((data) => (
+                                                                    <tbody>
+                                                                        <tr> 
+                                                                            <td>{data?.created_at}</td>
+                                                                            <td>{data?.order_id}</td>
+                                                                            <td>{data?.order_id}</td>
+                                                                            <td>{data?.status}</td>
+                                                                        </tr>
+                                                                       
+                                                                    </tbody>))}
+                                                                </Table>
+
+
+
+
+                                                                <section className="vh-100 gradient-custom-2">
+                                                                    <div className="  ">
+                                                                        <div className="row d-flex  align-items-center h-100">
+                                                                            {/* col-md-10 col-lg-8 col-xl-6 */}
+                                                                            <div className="">
+                                                                                {/* style="border-radius: 16px;" */}
+                                                                                <div className="card card-stepper" >
+
+                                                                                    <div className="card-body p-4">
+                                                                                        <div className="d-flex flex-row mb-4 pb-2">
+                                                                                            <div className="flex-fill">
+                                                                                                <h5 className="bold">Lower 3D Model</h5>
+                                                                                                <div>
+                                                                                                    <p className="text-muted mb-2"> Order ID <span className="fw-bold text-body">2112</span></p>
+                                                                                                    <p className="text-muted mb-0"> Place On <span className="fw-bold text-body">12-1-2024</span> </p>
+                                                                                                </div>
+                                                                                                <p className="text-muted mb-0"> Price <span className="fw-bold text-body"> $ 299</span> </p>
+                                                                                                {/* <h4 className="mb-3">  <span className="small text-muted">  </span></h4> */}
+
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <img className="align-self-center img-fluid"
+                                                                                                    src={wish} width="250" />
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>

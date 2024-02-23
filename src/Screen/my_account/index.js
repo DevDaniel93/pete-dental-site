@@ -3,6 +3,8 @@ import wish from '../../Assets/product-img-04.png'
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
+import Table from 'react-bootstrap/Table';
+
 // import CustomTable from "../../Components/CustomTable"
 import Tab from 'react-bootstrap/Tab';
 import { UserLayout } from "../../Components/Layout/UserLayout";
@@ -14,12 +16,24 @@ import { CustomButton } from '../../Components/CustomButton'
 
 import './style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Order_list, Profile_view, Profile_edit } from '../../Services';
+import { Order_list, Profile_view, Profile_edit, Wish_list } from '../../Services';
+import { Link, useParams } from 'react-router-dom';
 export function My_account() {
     const [formData, setFormData] = useState({});
     const [editUser, setEditUser] = useState(false);
-
-
+    const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
+ 
+    
+  const handlechang = (event) => {
+    const { name, value } = event.target;
+ 
+ 
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    console.log(formData);
+  };
 
     console.log("formData", formData)
     const handleget = () => {
@@ -43,11 +57,7 @@ export function My_account() {
                 document.querySelector('.loaderBox').classList.add("d-none");
                 setEditUser(true)
                 console.log("data profile", data)
-                setFormData({
-                    ...formData,
-                    name: data.data.name,
-                    email: data.data?.email
-                });
+                setFormData(data?.data);
 
 
             })
@@ -97,9 +107,27 @@ export function My_account() {
 
         fetchData();
     }, []);
+    console.log("all_product", all_product)
 
+    const [wishlist, setWish_lish] = useState([]);
+    const wishdata = async () => {
+        document.querySelector('.loaderBox').classList.remove("d-none");
+        try {
+            document.querySelector('.loaderBox').classList.add("d-none");
+            const data = await Wish_list();
+            setWish_lish(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            document.querySelector('.loaderBox').classList.add("d-none")
+        }
+    };
 
-    console.log("all_product order", all_product?.data)
+    useEffect(() => {
+
+        wishdata();
+    }, []);
+    console.log("wishlist", wishlist?.data)
+
     const handleEditSubmit = (event) => {
         event.preventDefault();
 
@@ -154,7 +182,6 @@ export function My_account() {
                                     </div>
                                 </div>
 
-                                {/* tabs  */}
                                 <Tab.Container id="left-tabs-example" defaultActiveKey="profile">
                                     <Row>
                                         <Col sm={3} className='bg-light'>
@@ -171,9 +198,8 @@ export function My_account() {
                                                     </div>
                                                 </Nav.Item>
 
-                                                {/* <Nav.Item> */}
                                                 <Nav.Link eventKey="MyOrder">My Orders</Nav.Link>
-                                                {/* <Nav.Link eventKey="wishList">Wish List</Nav.Link> */}
+                                                <Nav.Link eventKey="wishList">Wish List</Nav.Link>
                                                 {/* </Nav.Item> */}
 
                                             </Nav>
@@ -202,23 +228,74 @@ export function My_account() {
 
                                                     </div>
                                                     <div className="row">
-                                                        <div className="col-lg-10">
+                                                        <div className="col-lg-12">
                                                             <div className="row mb-4">
-                                                                <div className="col-lg-6 mb-3">
-                                                                    <h4 className="secondaryLabel">Name:</h4>
-                                                                    <p className="secondaryText">{profile?.data?.name}</p>
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel">Name</h4>
+                                                                    <p className="secondaryText">{profile?.data?.first_name}</p>
                                                                 </div>
-                                                                {/* <div className="col-lg-6 mb-3">
-                                                                    <h4 className="secondaryLabel">Email</h4>
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Last Name</h4>
+                                                                    <p className="secondaryText">{profile?.data?.last_name}</p>
+                                                                </div>
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Email</h4>
                                                                     <p className="secondaryText">{profile?.data?.email}</p>
-                                                                </div> */}
+                                                                </div>
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Phone Number</h4>
+                                                                    <p className="secondaryText">{profile?.data?.phone_number}</p>
+                                                                </div>
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> City    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.city}</p>
+                                                                </div>
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> State    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.state}</p>
+                                                                </div>
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Zip Code    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.zip_code}</p>
+                                                                </div>
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Dental board_of California License number    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.dental_board_of_california_license_number}</p>
+                                                                </div>
+
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Tex number    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.tin}</p>
+                                                                </div>
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Dental board_of California License number    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.dental_board_of_california_license_number}</p>
+                                                                </div>
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Dental board_of California License number    </h4>
+                                                                    <p className="secondaryText">{profile?.data?.dental_board_of_california_license_number}</p>
+                                                                </div>
+                                                                {/* tin */}
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Legal Office Name</h4>
+                                                                    <p className="secondaryText">{profile?.data?.legal_office_name}</p>
+                                                                </div>
+
+
+                                                                <div className="col-xl-4 col-lg-6 mb-3">
+                                                                    <h4 className="secondaryLabel"> Business Address</h4>
+                                                                    <p className="secondaryText">{profile?.data?.bussiness_address}</p>
+                                                                </div>
 
                                                             </div>
                                                         </div>
-                                                        {/* <div className="col-12">
-                                                        <CustomButton type="button" variant="primaryButton" className="me-3 mb-2" text="Edit Profile" onClick={() => { navigate('/profile/edit-profile') }} />
-                                                        <CustomButton type="button" variant="secondaryButton" className="me-3 mb-2" text="Change Password" onClick={() => { navigate('/profile/change-password') }} />
-                                                    </div> */}
 
                                                     </div>
                                                 </Tab.Pane>
@@ -250,48 +327,51 @@ export function My_account() {
                                                                 <div className='row'>
                                                                     <div className='col-md-10'>
                                                                         <div className='d-flex align-items-baseline justify-content-between'>
-                                                                            <h3> My Order</h3>
+                                                                            <h3 className=' p-0'> My Order</h3>
 
-                                                                            <div>
-                                                                                {/* <span type="button" onClick={handleget}>    View Details</span> */}
-                                                                            </div>
+
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
 
-                                                                <section className="vh-100 gradient-custom-2">
-                                                                    <div className="  ">
-                                                                        <div className="row d-flex  align-items-center h-100">
-                                                                            {/* col-md-10 col-lg-8 col-xl-6 */}
-                                                                            <div className="">
-                                                                                {/* style="border-radius: 16px;" */}
-                                                                                <div className="card card-stepper" >
+                                                                <Table striped bordered hover>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Order Id </th>
+                                                                            <th>Order Date </th>
 
-                                                                                    <div className="card-body p-4">
-                                                                                        <div className="d-flex flex-row mb-4 pb-2">
-                                                                                            <div className="flex-fill">
-                                                                                                <h5 className="bold">Lower 3D Model</h5>
-                                                                                                <div>
-                                                                                                    <p className="text-muted mb-2"> Order ID <span className="fw-bold text-body">2112</span></p>
-                                                                                                    <p className="text-muted mb-0"> Place On <span className="fw-bold text-body">12-1-2024</span> </p>
-                                                                                                </div>
-                                                                                                <h4 className="mb-3"> $ 299 <span className="small text-muted">  </span></h4>
+                                                                            <th>total</th>
+                                                                            <th>Status</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    {all_product?.data?.map((data) => (
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>{data?.order_id}</td>
+                                                                                <td>{data?.created_at}</td>
 
-                                                                                            </div>
-                                                                                            <div>
-                                                                                                <img className="align-self-center img-fluid"
-                                                                                                    src={wish} width="250" />
-                                                                                            </div>
-                                                                                        </div>
+                                                                                <td>{data?.total_price}</td>
+                                                                                <td>{data?.status}</td>
+                                                                                {/* to={`/${data?.slug}`} */}
+                                                                                <td className=' text-decoration-none  text-black  text-de'>
+                                                                                    <Link
+                                                                                        className=' text-black   text-decoration-none '
+                                                                                        to={`/order-history/${data?.id}`}
+                                                                                    >
 
-                                                                                    </div>
+                                                                                        View
+                                                                                    </Link>
+                                                                                </td>
+                                                                            </tr>
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </section>
+                                                                        </tbody>))}
+                                                                </Table>
+
+
+
+
                                                             </div>
                                                         </div>
                                                         <div className="row">
@@ -310,10 +390,81 @@ export function My_account() {
                                                 </Tab.Pane>
 
 
+                                                <Tab.Pane eventKey="wishList">
+                                                    <div className='row'>
+                                                        <div className='col-md-12'>
+                                                            <div className='pageTitle mb-4'>
+                                                                <div className='row'>
+                                                                    <div className='col-md-10'>
+                                                                        <div className='d-flex align-items-baseline justify-content-between'>
+                                                                            <h3 className=' p-0'> Wish List</h3>
+
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                {
+                                                                    wishlist?.data?.map((item) => (
+                                                                        <div className="row justify-content-center  align-items-center py-4 ">
+                                                                            <div className="col-md-2">
+                                                                                <div className="wish text-center">
+                                                                                    <img
+                                                                                        src={baseurl + item?.product_detail?.src}
+                                                                                        className="img-fluid mw-100 coverImage"
+                                                                                        alt=""
+                                                                                    />
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div className="col-md-10">
+                                                                                <div className="d-flex align-items-center justify-content-between">
+                                                                                    <div className="cart_item_details ml-0">
+                                                                                        <h6 className="cart_item_title">{item?.product_detail?.name}</h6>
+
+                                                                                        <div className="cart_item_detail">
+                                                                                            <span className="cart_item_price">{item?.product_detail?.price}</span>
+                                                                                        </div>
+
+                                                                                        <div>
+
+                                                                                        </div>
+
+                                                                                        <div>
+                                                                                            <span className="cart_item_instock">
+                                                                                                {item?.product_detail?.description
+                                                                                                    ?.split(" ")
+                                                                                                    .slice(0, 14)
+                                                                                                    .join(" ") || ""}
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div className="cart_item_action_btn text-center">
+
+
+                                                                                        <div className=" text-center">
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    ))
+
+                                                                }
 
 
 
 
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </Tab.Pane>
 
 
 
@@ -328,40 +479,222 @@ export function My_account() {
                         </div>
                     </section>
 
-                    <CustomModal show={editUser} close={() => { setEditUser(false) }} >
-                        <CustomInput
-                            label="Name"
-                            type="text"
-                            disabled
-                            placeholder="Name"
-                            required
-                            name="name"
-                            labelclassName='mainLabel'
-                            input_icon='mainInput'
-                            value={formData.name}
-                            onChange={(event) => {
-                                setFormData({ ...formData, name: event.target.value });
+                    <CustomModal show={editUser} close={() => { setEditUser(false) }} className="modalXl" heading="Edit Profile">
 
-                            }}
 
-                        />
-                        {/* <CustomInput
-                            className="mainInput"
-                            label="Email"
-                            type="rmail"
-                            disabled
-                            placeholder="email"
-                            required
-                            name="emai"
-                            labelclassName='mainLabel'
-                            input_icon='mainInput'
-                            value={formData.email}
-                            onChange={(event) => {
-                                setFormData({ ...formData, email: event.target.value });
+                        <form onSubmit={handleEditSubmit} className='formDataStyle '>
+                            <div className='row mt-3'>
+                            
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="First Name"
+                                        type="text"
+                                         
+                                        placeholder="Name"
+                                        required
+                                        name="first_name"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.first_name}
+                                        onChange={handlechang}
 
-                            }}
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Last Name"
+                                        type="text"
+                                         
+                                        placeholder="last_name"
+                                        required
+                                        name="last_name"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.last_name}
+                                        onChange={handlechang}
 
-                        /> */}
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Legal Office Name"
+                                        type="text"
+                                         
+                                        placeholder="legal_office_name"
+                                        required
+                                        name="legal_office_name"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.legal_office_name}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Bussiness_Address"
+                                        type="text"
+                                         
+                                        placeholder="bussiness_address"
+                                        required
+                                        name="bussiness_address"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData?.bussiness_address}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Email"
+                                        type="email"
+                                        disabled
+                                         
+                                        placeholder="email"
+                                        required
+                                        name="email"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.email}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="User Name"
+                                        type="text"
+                                         
+                                        placeholder=" User Name"
+                                        required
+                                        name="user_name"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.user_name}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="phone_number"
+                                        type="number"
+                                         
+                                        placeholder="phone_number"
+                                        required
+                                        name="phone_number"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.phone_number}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="City"
+                                        type="text"
+                                         
+                                        placeholder="City"
+                                        required
+                                        name="city"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.city}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="State"
+                                        type="text"
+                                         
+                                        placeholder="state"
+                                        required
+                                        name="state"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.state}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Zip Code"
+                                        type="text"
+                                         
+                                        placeholder="zip_code"
+                                        required
+                                        name="zip_code"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.zip_code}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Dental Board_Of California License Number"
+                                        type="text"
+                                         
+                                        placeholder="dental_board_of_california_license_number"
+                                        required
+                                        name="dental_board_of_california_license_number"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.dental_board_of_california_license_number}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                                <div className='col-xl-4 col-lg-6 mb-4'>
+                                    <CustomInput
+                                        label="Tex"
+                                        type="text"
+                                         
+                                        placeholder="tin"
+                                        required
+                                        name="tin"
+                                        labelclassName='mainLabel'
+                                        input_icon='mainInput'
+                                        value={formData.tin}
+                                        onChange={handlechang}
+
+                                    />
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                         <CustomButton classbtn="cus-btn" btn_text='Update' type='button' onClick={handleEditSubmit} />

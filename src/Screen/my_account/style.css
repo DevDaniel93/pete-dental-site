@@ -14,7 +14,7 @@
 
 .myAccountPage .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-    background-color: #5a3473 !important;
+    background-color: #3d9aa8 !important;
     color: #fff !important;
 }
 
@@ -38,15 +38,13 @@
     height: 88%;
 
 }
-
 .cus-btn {
     padding: 10px 1;
     padding: 4px 14px;
     color: white;
-    background-color: #7272cb;
+    background-color: #3AB286;
     border-radius: 5%;
-    letter-spacing: 2px;
-
+    /* letter-spacing: 2px; */
     border: thin;
     width: min-content;
 }
@@ -90,3 +88,9 @@
     height: 110px;
     width: 113px;
 }
+
+.wish .img-fluid {
+    max-width: 218%;
+    height: 92px;
+}
+    

@@ -61,13 +61,13 @@ export function Order_placed() {
 
                                     <div className="sub_details ml-auto">
                                         <span>Subtotal</span>
-                                        <span>#100</span>
+                                        <span>{all_product?.data?.total_price}</span>
                                     </div>
 
                                     <div className="sub_details ml-auto">
                                         <span>Total</span>
-                                        <span>#100</span>
-                                    </div>
+                                        <span>{all_product?.data?.total_price}</span>
+                                    </div>  
 
                                     {/* <div className="mt-4">
                     <a href="./index.php" className="continue_shopping_button">CONTINUE SHOPPING</a>

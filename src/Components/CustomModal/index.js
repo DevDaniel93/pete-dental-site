@@ -2,7 +2,7 @@ import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faQuestionCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-import {CustomButton} from '../CustomButton';
+import { CustomButton } from '../CustomButton';
 
 // import { check, question } from '../../Assets/images';
 
@@ -11,13 +11,13 @@ import './style.css'
 export const CustomModal = (props) => {
     return (
         <>
-            <Modal show={props?.show} centered onHide={props?.close}>
+            <Modal show={props?.show} centered onHide={props?.close} className={props.className}>
                 <button className='closeButton' onClick={props?.close}><FontAwesomeIcon icon={faTimes} /></button>
                 <Modal.Body className={props.children ? '' : 'text-center'}>
                     {props?.children ? (
                         ''
                     ) : (
- 
+
                         props?.status === true ? (
                             <FontAwesomeIcon icon={faCheckCircle} className='checkMark' />
                         ) : (
@@ -26,14 +26,13 @@ export const CustomModal = (props) => {
                     )}
 
 
-                    <div className="modalContent">
+                    <div className="row modalContent">
                         <h2 className="modalHeading">{props?.heading}</h2>
                         {props?.children ? (
-                            <p>
-                                <form onSubmit={props?.handleSubmit} className='formDataStyle'>
-                                    {props?.children}
-                                </form>
-                            </p>
+                            <>
+                                {props?.children}
+                            </>
+
                         ) : (
                             props?.success ? <CustomButton onClick={props?.close} variant='primaryButton' text={props?.btnTxt ? props?.btnTxt : 'Ok'} />
                                 :
@@ -52,4 +51,3 @@ export const CustomModal = (props) => {
         </>
     )
 }
- 

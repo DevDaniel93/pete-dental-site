@@ -4,7 +4,7 @@ import { product_img } from './../../Assets/product-img-01.png'
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faBell,
     faUser,
@@ -13,11 +13,11 @@ import {
     faEllipsisV,
     faSignOut,
     faHeartCircleBolt,
-  } from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons";
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css'
 
-export function Cards (props) {
+export function Cards(props) {
     return (
 
         <section className="product_listing_section">
@@ -27,8 +27,10 @@ export function Cards (props) {
                     <div className="col-sm-6 col-lg-5 mb-3 mx-auto">
 
                         <div className="product_img position-relative">
-                            
-                            {/* <span onClick={props?.addwish} className="button  whislist text-secondary"><FontAwesomeIcon icon={faHeart} /></span> */}
+
+                            <span onClick={props?.addwish} className={props?.status === true ? "whislist      text-primary    " : "whislist  text-secondary  "}><FontAwesomeIcon icon={faHeart} /></span>
+
+                            {/* <span onClick={props?.addwish} className={props?.status === true : "whislist text-secondary"  ? "whislist text-secondary"}><FontAwesomeIcon icon={faHeart} /></span> */}
                             <img src={props.img} className="w-100" alt="" />
                         </div>
 
@@ -54,8 +56,8 @@ export function Cards (props) {
                             {/* <CustomButton className="product_add_to_cart_btn"
                                 props={props.text}
                             /> */}
-                            <span className="product_price_btn">${props.price}</span>                              
-                            <button  className="product_add_to_cart_btn"   onClick={props?.onClick}>{props?.text}</button>
+                            <span className="product_price_btn">${props.price}</span>
+                            <button className="product_add_to_cart_btn p-0 " onClick={props?.onClick}>{props?.text}</button>
                             {/* <Link  className="product_add_to_cart_btn"  to={props?.to}  >{props?.viewtext}</Link> */}
                         </div>
 
@@ -63,7 +65,7 @@ export function Cards (props) {
                 </div>
 
             </Container>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </section>
         // <div>Hello</div>
     )

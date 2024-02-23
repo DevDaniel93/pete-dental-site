@@ -75,3 +75,45 @@
   //               </MDBRow>
   //             </MDBContainer>
   //           </section> */}
+
+
+  <form>
+  <div className="cart_input">
+
+
+
+
+    <CustomInput
+      label="Patient Name/id"
+      type="text"
+      disabled
+      placeholder="Patient Name"
+      required
+      name="name"
+      labelclassName='mainLabel'
+      input_icon='mainInput'
+    />
+  </div>
+
+
+
+
+  <div className="col-md-6 mb-3">
+
+    <CustomInput
+      label=" Upload File"
+      type="file"
+      disabled
+
+      required
+      name="name"
+      labelclassName='mainLabel'
+      input_icon='mainInput'
+    />
+    <div className="invalid-feedback">
+      {" "}
+      Valid last name is required.{" "}
+    </div>
+  </div>
+  
+</form>

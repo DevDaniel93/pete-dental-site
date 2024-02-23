@@ -26,6 +26,8 @@ svg.svg-inline--fa.fa-xmark.corsserror {
     --whiteColor: #fff;
 }
 
+
+
 body {
     /* font-family: 'Qanelas'; */
     /* font-weight: 500; */
@@ -178,6 +180,10 @@ body {
   body {
     position: relative;
   }
+  
+  .coverImage {
+    object-fit: cover;
+  }
   @keyframes s2 {to{transform: rotate(1turn)}}
 
   .loaderBox {
@@ -190,4 +196,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+@media(min-width: 1200px) {
+    .modalXl .modal-dialog{
+        --bs-modal-width: 1140px;
+    }
 }
