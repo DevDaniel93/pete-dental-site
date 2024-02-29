@@ -19,7 +19,7 @@ import userImage from '../../../Assets/userImage.png'
 import "./style.css";
 
 
-export const Header = (props) => {
+export const Header = () => {
   const login = localStorage.getItem('login');
 
   const handleRedirect = () => {

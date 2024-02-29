@@ -94,7 +94,7 @@ export const Sign_up = () => {
                 <section className="loginform_section pb-5">
                     <div className="container">
                         <div className="row">
-                            <div className="col-sm-12 col-lg-8 mx-auto">
+                            <div className="col-sm-12 col-lg-12 mx-auto">
 
                                 <AuthLayout heading="Pete Cardamone" text="WELCOME! Register your Account" para="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
                                     accountstaus="Already have an Account? Login " loginlink="/Login" login="login"

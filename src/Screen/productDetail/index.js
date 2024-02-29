@@ -38,8 +38,7 @@ export function ProductCheckout(product) {
   const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
   const cartItems = useSelector((state) => state.cart.items);
   const [formData, setFormData] = useState({
-    patient_name: "",
-    file: ""
+    
   });
 
   const handleChangeQuantity = (productid, newQuantity) => {
@@ -85,11 +84,12 @@ export function ProductCheckout(product) {
       dispatch(patient_file(productid, fileName));
       setFormData((prevData) => ({
         ...prevData,
-        file: fileName,
+        patient_file: fileName,
       }));
     }
     console.log(formData)
   };
+  console.log("formData data" , formData)
 
 
 

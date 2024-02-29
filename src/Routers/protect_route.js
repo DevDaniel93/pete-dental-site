@@ -26,7 +26,7 @@ useEffect(() => {
   navigate('/home');
  
         }
-    })
+    }, [])
     return (
         <>
             <Components />

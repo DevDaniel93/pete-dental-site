@@ -9,7 +9,7 @@ import {
     ,
     removeFromCart,
     decrementQuantityCart,
- 
+
     updateCartItem,
 } from "../../store/action";
 import {
@@ -43,7 +43,7 @@ export function Checkout(product) {
 
 
 
-    console.log("cartItems"  ,cartItems)
+    console.log("cartItems", cartItems)
     const handleChangeQuantity = (productid, newQuantity) => {
         dispatch(incrementvariationQuantity(productid, newQuantity));
 
@@ -57,13 +57,110 @@ export function Checkout(product) {
     const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault();
+        // const patientFiles = cartItems[0].patient_file
+
         toast("Checkout successfull")
 
         const formDataMethod = new FormData();
+
+        //     for (const key in formData) {
+        //         formDataMethod.append(key, formData[key]);
+        //     }
+
+
+
+        //     cartItems.forEach(function(item, index) {
+        //         if (item.patient_file) {
+        //             var reader = new FileReader();
+        //   console.log("reader" , reader)
+        //           reader.onload = function (event) {
+
+        //                     formDataMethod.append('products[' + index + ']',{...item, patient_file: "Umair"});
+        //           };
+
+        //             reader.readAsBinaryString(item.file);
+        //       } else {
+        //           formDataMethod.append('products[' + index + ']', JSON.stringify(item));
+        //       }
+        //   });
+
+        // Append non-file data
         for (const key in formData) {
             formDataMethod.append(key, formData[key]);
         }
-        formDataMethod.append('products', JSON.stringify(cartItems));
+
+        // Append cartItems
+        cartItems.forEach(function (item, index) {
+            if (item.patient_file) {
+                var reader = new FileReader();
+
+                reader.onload = function (event) {
+                    var binaryString = String.fromCharCode.apply(null, new Uint8Array(reader.result));
+
+
+                    formDataMethod.append('products[' + index + ']', JSON.stringify({ ...item, patient_file: binaryString }));
+                };
+
+                reader.readAsArrayBuffer(item.patient_file);
+            } else {
+                formDataMethod.append('products[' + index + ']', JSON.stringify(item));
+            }
+        });
+
+
+
+
+        // formDataMethod.append('products', JSON.stringify(cartItems));
+        // console.log(JSON.stringify)
+
+        // for (const key in cartItems) {
+        //     formDataMethod.append(key, cartItems[key]);
+        // }
+
+
+        // formDataMethod.append('products', JSON.stringify(cartItems));
+
+        // formDataMethod.append('pfile_', patientFile);
+
+
+
+
+
+
+
+
+
+
+
+
+        // cartItems.forEach(function(item, index) {
+        //       if (item.file) {
+        //           var reader = new FileReader();
+
+        //         reader.onload = function (event) {
+
+        //             formData.append('products[' + index + ']', JSON.stringify({...item, patient_file: event.target.result}));
+        //         };
+
+        //           reader.readAsBinaryString(item.file);
+        //     } else {
+        //           formData.append('products[' + index + ']', JSON.stringify(item));
+        //     }
+        // });
+
+
+        // fetch('your-api-endpoint', {
+        //     method: 'POST',
+        //     body: formData,
+
+        // // })
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        //     .catch(error => console.error('Error:', error));
+
+
+
+
 
         document.querySelector(".loaderBox").classList.remove("d-none");
 
@@ -73,11 +170,13 @@ export function Checkout(product) {
             body: formDataMethod,
         })
             .then((response) => {
-                dispatch(removeFromCart())
-                navigate('/order_places')
+
+                // dispatch(removeFromCart())
+                // navigate('/order_places')
                 return response.json();
             })
-            .then((data) => {
+            .then((response) => {
+                // console.log(response);
                 document.querySelector(".loaderBox").classList.add("d-none");
 
             })
@@ -86,6 +185,9 @@ export function Checkout(product) {
 
             });
     };
+
+
+    console.log("cartItems data", cartItems[0].patient_file)
 
     const calculateTotalPrice = (product) => {
         const quantity = product.qty || 0;
@@ -131,7 +233,7 @@ export function Checkout(product) {
 
         return total + productPrice * productQuantity;
     }, 0);
- 
+
     // const  handlecheckout = ( ) =>{
     //   navigate('/order_places')
     // }

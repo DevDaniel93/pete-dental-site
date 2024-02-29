@@ -85,9 +85,11 @@ export const Get_all_product = async (slug) => {
             });
         ;
         const productData = await res.json();
+        document.querySelector('.loaderBox').classList.add("d-none");
+
         console.log("productData", res)
         const data = productData
-        console.log("LogoutData data", data)
+        console.log("LogoutDataCat data", data)
         return data?.data;
         // } catch (error) {
         // console.log('Error in getting all products (service) =>', error)
