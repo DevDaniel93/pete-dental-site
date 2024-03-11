@@ -170,6 +170,29 @@ export const Get_all_category = async () => {
 
 }
 
+export const Get_all_related = async () => {
+
+    try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/public/api/product-listing`,
+            {
+                method: 'GET',
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json',
+                //     'Authorization': `Bearer ${'60|GdwThafWZ9bw1JI3PuhVlv3hNPUStMh3hUEFqpLZ541862d9'}`
+                // },
+            });
+        const catigoryData = await res.json();
+        console.log("procatigoryDataductData", catigoryData)
+        const data = catigoryData
+        console.log("LogoutData data", data)
+        return data?.data;
+    } catch (error) {
+        console.log('Error in getting all products (service) =>', error)
+    }
+
+}
+
 
 export const Checkout = async (formData, cartItems) => {
 
@@ -427,3 +450,21 @@ export const order_view = async (id) => {
     }
 
 }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

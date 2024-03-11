@@ -40,12 +40,12 @@ export const Loginpage = () => {
             if (response.ok) {
 
                 const responseData = await response.json();
-                console.log("responseData" , responseData)
-            
+                console.log("responseData", responseData)
+
                 localStorage.setItem('login', responseData.data.token);
                 localStorage.setItem('name', responseData.data.name);
                 localStorage.setItem('email', responseData.data.email);
-                
+
                 console.log('Login Response:', responseData);
                 document.querySelector('.loaderBox').classList.add("d-none");
                 navigate('/')
@@ -99,14 +99,9 @@ export const Loginpage = () => {
                                             label="Email" type="email" labelclassName='login_form_email'
                                             // aria_describedby="emailHelp"
                                             // inputclassName='form-control form_email_field' 
-
-
-
                                             name="email" required="required"
                                             id="login_form_email"
                                             placeholder="Enter Your Email"
-
-
                                             onChange={handleChange}
                                         />
 
@@ -135,7 +130,7 @@ export const Loginpage = () => {
                                         />
                                         <div>
                                             <CustomButton
-                                                type='sunmit'  classbtn="btn btn-success w-100 mt-3" btn_text="Log In" />
+                                                type='sunmit' classbtn="btn btn-success w-100 mt-3" btn_text="Log In" />
                                         </div>
                                     </form>
                                 </AuthLayout>

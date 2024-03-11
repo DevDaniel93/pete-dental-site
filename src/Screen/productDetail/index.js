@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { Banner } from "../../Components/Banner";
 // import { fetchProducts, addToCart, incrementQuantity, decrementQuantity } from '../../store/action';
 import { useDispatch, useSelector } from "react-redux";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Get_all_related } from '../../Services/index'
 import {
   addToCart,
   incrementvariationQuantity, incrementQuantityCart,
@@ -11,6 +14,7 @@ import {
   decrementQuantityCart,
   removeFromCart,
   updateCartItem,
+  deleteitem
 } from "../../store/action";
 import {
   MDBBtn,
@@ -35,10 +39,11 @@ import { Link } from "react-router-dom";
 export function ProductCheckout(product) {
   const [productQuantities, setProductQuantities] = useState({});
   const [qty, setQty] = useState(1);
-  const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
+ 
   const cartItems = useSelector((state) => state.cart.items);
+  const [all_product, setAll_product] = useState([]);
   const [formData, setFormData] = useState({
-    
+
   });
 
   const handleChangeQuantity = (productid, newQuantity) => {
@@ -75,7 +80,7 @@ export function ProductCheckout(product) {
 
 
 
-
+  const baseurl = `${process.env.REACT_APP_API_URL}/public/`;
   const filehandleChange = (productid, event) => {
     const file = event.target.files[0];
 
@@ -89,7 +94,7 @@ export function ProductCheckout(product) {
     }
     console.log(formData)
   };
-  console.log("formData data" , formData)
+  console.log("formData data", formData)
 
 
 
@@ -143,6 +148,30 @@ export function ProductCheckout(product) {
   }
 
   console.log("cartitm", cartItems)
+
+
+
+  const cartItemIds = cartItems.map(item => item.id);
+
+  const filteredProducts = all_product?.filter(item => !cartItemIds.includes(item.id));
+  const finalProducts = filteredProducts?.slice(0, 4);
+ 
+
+
+  const fetchData = async () => {
+    try {
+      const data = await Get_all_related();
+      setAll_product(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  //  console.log("relatedproduct" , all_product)
+
   return (
     <>
       <UserLayout>
@@ -161,51 +190,51 @@ export function ProductCheckout(product) {
 
 
                     <div className=" col-md-4">
-                    
-                        <div className="cart_input mb-0 ">
-                          <CustomInput
-                            label="Patient Name/id"
-                            type="text"
 
-                            placeholder="Patient Name"
+                      <div className="cart_input mb-0 ">
+                        <CustomInput
+                          label="Patient Name/id"
+                          type="text"
+
+                          placeholder="Patient Name"
+                          required
+                          name="patient_name"
+                          labelclassName='mainLabel'
+                          input_icon='mainInput'
+                          onChange={(event) => handleChange(data.id, event)}
+                        />
+                        <span className=" mt-0 ">
+                          {nameerror}
+                        </span>
+
+                      </div>
+                      <div class="">
+                        <div className="mb-3">
+
+                          <CustomInput
+                            label=" Upload File"
+                            type="file"
                             required
-                            name="patient_name"
+                            name="patient_file"
                             labelclassName='mainLabel'
                             input_icon='mainInput'
-                            onChange={(event) => handleChange(data.id, event)}
+
+                            // onChange={() => filehandleChange(data.id)}
+                            onChange={(event) => filehandleChange(data.id, event)}
                           />
                           <span className=" mt-0 ">
-                            {nameerror}
+                            {fileerror}
                           </span>
 
-                        </div>
-                        <div class="">
-                          <div className="mb-3">
 
-                            <CustomInput
-                              label=" Upload File"
-                              type="file"
-                              required
-                              name="patient_file"
-                              labelclassName='mainLabel'
-                              input_icon='mainInput'
-
-                              // onChange={() => filehandleChange(data.id)}
-                              onChange={(event) => filehandleChange(data.id, event)}
-                            />
-                            <span className=" mt-0 ">
-                              {fileerror}
-                            </span>
-
-
-                            <div className="invalid-feedback">
-                              {" "}
-                              Valid last name is required.{" "}
-                            </div>
+                          <div className="invalid-feedback">
+                            {" "}
+                            Valid last name is required.{" "}
                           </div>
                         </div>
+                      </div>
 
-                   
+
                     </div>
 
 
@@ -251,7 +280,7 @@ export function ProductCheckout(product) {
                             <span className="cart_item_instock">
                               {data?.description
                                 ?.split(" ")
-                                .slice(0, 14)
+                              ?.slice(0, 14)
                                 .join(" ") || ""}
                             </span>
                           </div>
@@ -263,7 +292,7 @@ export function ProductCheckout(product) {
                           <div className=" text-center">
                             <button
                               className="cart_del_btn text-danger border-0 bg-transparent"
-                              onClick={() => dispatch(removeFromCart(data.id))}
+                              onClick={() => dispatch(deleteitem(data.id))}
                             >
                               <span className="delete_bucket">
                                 <i className="fa-solid fa-trash"></i>
@@ -306,6 +335,31 @@ export function ProductCheckout(product) {
                     </ul>
 
                   </div>
+
+                </div>
+
+
+
+
+
+                <div className="row">
+                  {finalProducts?.map((items) => 
+(
+                    <div className="col-md-3">
+
+                      <Card style={{ width: '18rem' }}>
+                        <Card.Img className="relatedimg  ml-3 " variant="top" src={baseurl + items?.src} />
+                        <Card.Body>
+                          <Card.Title>{items?.name}</Card.Title>
+                          <Card.Text>
+                           {items?.description?.slice(0 , 124)}
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                 ) )
+                  }
+               
 
                 </div>
               </div>

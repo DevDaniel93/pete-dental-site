@@ -41,7 +41,7 @@ export function Cards(props) {
                             {/* {wishlish === true :  (  <span onClick={props?.addwish} className={props?.status === true ? "whislist      text-primary    " : "whislist  text-secondary  "}><FontAwesomeIcon icon={faHeart} /></span> ) ? " "} */}
                             {LogoutData && (
                                
-                                <span onClick={props?.wishClick} className={props?.status === true ? "wishlist text-primary" : "wishlist text-secondary"}>
+                                <span onClick={props?.wishClick} className={props?.status === true ? "wishlist text-primary" : "wishlist text-secondary"} id="heart_icon_span">
                                     <FontAwesomeIcon icon={faHeart} />
                                 </span>
                             ) }

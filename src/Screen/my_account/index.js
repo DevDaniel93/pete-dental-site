@@ -340,8 +340,14 @@ export function My_account() {
                                                                         <tr>
                                                                             <th>Order Id </th>
                                                                             <th>Order Date </th>
-
+                                                                            <th>Client Id </th>
+                                                                            <th>Client Name </th>
+                                                                            {/* Shipping carrier */}
+                                                                            <th>Shipping Carrier</th>
+                                                                            <th>Shipping DATE</th>
+                                                                            <th>Tracking</th>
                                                                             <th>total</th>
+
                                                                             <th>Status</th>
                                                                             <th>Action</th>
                                                                         </tr>
@@ -350,8 +356,14 @@ export function My_account() {
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>{data?.order_id}</td>
+
                                                                                 <td>{data?.created_at}</td>
 
+                                                                                <td>{data?.user_id}</td>
+                                                                                <td>{data?.user_name}</td>
+                                                                                <td>234234</td>
+                                                                                <td>{data?.created_at}</td>
+                                                                                <td>2323</td>
                                                                                 <td>{data?.total_price}</td>
                                                                                 <td>{data?.status}</td>
                                                                                 {/* to={`/${data?.slug}`} */}

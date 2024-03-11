@@ -77,7 +77,7 @@ export const PrintedModels = () => {
     console.log("notify", notify)
     const navigate = useNavigate()
 
-
+// integerate react strip
 
     return (
         <>

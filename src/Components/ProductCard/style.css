@@ -51,6 +51,12 @@
     color: red;
 }
 
+#heart_icon_span{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
 
 
 @media (max-width: 1024px){

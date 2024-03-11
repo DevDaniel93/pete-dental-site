@@ -21,22 +21,6 @@ export const Home = () => {
   return (
     <>
       <UserLayout>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

@@ -4,10 +4,14 @@ import { UserLayout } from '../../Components/Layout/UserLayout'
 import { Banner } from '../../Components/Banner'
 import { Container } from "react-bootstrap";
 import { CustomInput } from "../../Components/CustomInput";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 export function Contect_us() {
+
   const [formData, setFormData] = useState({
 
   });
+  const contact = () => toast("Querery send Successfully");
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -16,11 +20,12 @@ export function Contect_us() {
     }));
 
   };
-
+  console.log("formData1", formData)
   const LogoutData = localStorage.getItem('login');
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    console.log("formData2", formData)
 
     const formDataMethod = new FormData();
     for (const key in formData) {
@@ -31,26 +36,45 @@ export function Contect_us() {
     document.querySelector(".loaderBox").classList.remove("d-none");
 
     fetch(`${process.env.REACT_APP_API_URL}/public/api/inquiry-send`, {
-
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        // // 'Accept': 'application/json',
+        // // 'Content-Type': 'application/json',
+        // 'content-type': 'multipart/form-data',
         'Authorization': `Bearer ${LogoutData}`
       },
-    }
+      body: formDataMethod
+    },
     )
+
+
+
+
 
       .then((response) => {
 
         return response.json();
-
-
+        setFormData({});
+        contact()
         console.log("contact", response)
+        setFormData((prevData) => ({
+          ...prevData,
+          message: "",
 
+
+        }));
       })
       .then((data) => {
         document.querySelector(".loaderBox").classList.add("d-none");
+        contact()
+
+        setFormData((prevData) => ({
+          ...prevData,
+          message: "",
+
+
+        }));
+        setFormData({});
 
       })
       .catch((error) => {
@@ -112,7 +136,7 @@ export function Contect_us() {
                     >
                       <div className="row">
                         <div className="col-md-6 mb-3">
-                          <label for="firstName">  Name</label>
+                          <label for="firstName"> Name</label>
                           <input
                             type="text"
                             required
@@ -160,14 +184,14 @@ export function Contect_us() {
 
 
                         <div className="col-md-6 mb-3">
-                          <label for="email">
+                          <label for="image">
                             Upload Image
                           </label>
 
 
 
                           <input
-className="Upload-IMG"
+                            className="Upload-IMG"
                             required
                             id='file'
                             type='file'
@@ -186,18 +210,18 @@ className="Upload-IMG"
                       </div>
 
                       <div className="mb-3">
-                        <label for="email">
+                        <label for="subject">
                           Subject
                         </label>
 
 
                         <input
-                          type="email"
+                          type="text"
                           required
                           placeholder="Subject"
                           labelclassName="mainLabel"
                           inputclassName="mainInput"
-                          name="text"
+                          name="subject"
                           value={formData.subject}
                           onChange={handleChange}
                           className="form-control"
@@ -211,7 +235,7 @@ className="Upload-IMG"
                       <div className="row">
                         <div className="md-form  mb-4">
                           <label for="message">Your message</label>
-                          <textarea type="text" id="message" name="message" rows="2" className="form-control md-textarea"></textarea>
+                          <textarea type="text" id="message" onChange={handleChange} name="message" rows="2" className="form-control md-textarea"></textarea>
 
                         </div>
 
@@ -226,65 +250,65 @@ className="Upload-IMG"
                       </button>
                     </form>
                   </div>
-              
-              
-              
-              
-              
+
+
+
+
+
                   <div className="col-md-4 order-2">
-                              <div className="quicklinks_main">
-                                  <h6 className="footer_subtitle">CONTACT INFO</h6>
+                    <div className="quicklinks_main">
+                      <h6 className="footer_subtitle">CONTACT INFO</h6>
 
-                                  <div>
-                                      <ul className="quick_links_list">
-                                          <li className="mb-2">
-                                              <a href="javascript:;" className="contact_list">
-                                                  <span><i className="fa-solid fa-phone-volume contact_icon"></i></span>
-                                                  <span>+1 (123) 456-7890</span>
-                                              </a>
-                                          </li>
+                      <div>
+                        <ul className="quick_links_list">
+                          <li className="mb-2">
+                            <a href="javascript:;" className="contact_list">
+                              <span><i className="fa-solid fa-phone-volume contact_icon"></i></span>
+                              <span>+1 (123) 456-7890</span>
+                            </a>
+                          </li>
 
-                                          <li className="mb-2">
-                                              <a href="javascript:;" className="contact_list">
-                                                  <span><i className="fa-solid fa-envelope-open-text contact_icon"></i></span>
-                                                  <span>email@example.com</span>
-                                              </a>
-                                          </li>
+                          <li className="mb-2">
+                            <a href="javascript:;" className="contact_list">
+                              <span><i className="fa-solid fa-envelope-open-text contact_icon"></i></span>
+                              <span>email@example.com</span>
+                            </a>
+                          </li>
 
-                                          <li>
-                                              <a href="javascript:;" className="contact_list">
-                                                  <span><i className="fa-solid fa-location-dot contact_icon"></i></span>
-                                                  <span>Lorem 123, Ipsum 456, Dolor 78, Sit AMET</span>
-                                              </a>
-                                          </li>
-                                          
-                                      </ul>
-                                  </div>
+                          <li>
+                            <a href="javascript:;" className="contact_list">
+                              <span><i className="fa-solid fa-location-dot contact_icon"></i></span>
+                              <span>Lorem 123, Ipsum 456, Dolor 78, Sit AMET</span>
+                            </a>
+                          </li>
 
-                              </div>
-                              
-                          </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
+                        </ul>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
                 <footer className="my-5 pt-5 text-muted text-center text-small">
 
@@ -294,6 +318,7 @@ className="Upload-IMG"
             </section>
           </section>
         </Container>
+        <ToastContainer />
       </UserLayout>
     </>
   )

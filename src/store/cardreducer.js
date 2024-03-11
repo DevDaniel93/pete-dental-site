@@ -155,31 +155,33 @@ const cartReducer = (state = initialState, action) => {
       };
 
 
+ 
+      case 'PATIENT_FILE':
+        const { patientid, patient_file } = action.payload;
+        console.log("patient_file", patient_file)
+        console.log("patientid", patientid)
+        return {
+          ...state,
+          items: state.items.map((item) =>
+            item.id === patientid ? { ...item, patient_file: patient_file } : item
+          ),
+        };
+  
+  
 
-    case 'PATIENT_FILE':
-      const { patientid, patient_file } = action.payload;
-      console.log("patient_file", patient_file)
-      console.log("patientid", patientid)
-      return {
-        ...state,
-        items: state.items.map((item) =>
-          item.id === patientid ? { ...item, patient_file: patient_file } : item
-        ),
-      };
+
+      case 'REMOVE_FROM_CART':
+        const patientide = action.payload;
+        // const { patientid } = action.payload;
+        const removeItems = state.items.filter(item => item.id !== patientide);
+   
+        return {
+          ...state,
+          items: removeItems,
+        };
 
 
-
-
-    // case 'REMOVE_FROM_CART':
-    //   const removedProductId = action.payload;
-
-    //   const removeItems = state.items.filter(item => item.id !== removedProductId);
-
-    //   return {
-    //     ...state,
-    //     items: removeItems,
-    //   };
-
+  
 
     case 'REMOVE_ALL_FROM_CART':
       return {

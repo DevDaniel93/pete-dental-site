@@ -88,6 +88,13 @@ export const patient_file = (patientid, patient_file) => ({
 });
 
 
+export const deleteitem = (patientid) => ({
+
+  type: 'REMOVE_FROM_CART',
+  payload: patientid,
+});
+
+
 
 // PATIENT_FILE
 

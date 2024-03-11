@@ -125,7 +125,7 @@ button, input, optgroup, select, textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    width: 49px;
+    /* width: 49px; */
 }
 
 .btn:not(:disabled):not(.disabled) {
@@ -294,4 +294,11 @@ inc{
 span.mt-0 {
     color: #f10142;
   
+}
+
+
+.relatedimg {
+ 
+    height: 146px;
+    width: 221px 
 }
