@@ -64,7 +64,7 @@ export function Checkout(product) {
 
 
 
-      const handleChangeQuantity = (productid, newQuantity) => {
+    const handleChangeQuantity = (productid, newQuantity) => {
         dispatch(incrementvariationQuantity(productid, newQuantity));
 
         setProductQuantities((prevQuantities) => ({
@@ -75,7 +75,7 @@ export function Checkout(product) {
     const dispatch = useDispatch();
 
     const navigate = useNavigate()
- 
+
     const paymentSend = (tokenData) => {
 
         toast("Checkout successfull")
@@ -112,7 +112,7 @@ export function Checkout(product) {
                 return response.json();
             })
             .then((response) => {
- 
+
                 document.querySelector(".loaderBox").classList.add("d-none");
 
             })
@@ -126,7 +126,7 @@ export function Checkout(product) {
 
 
     const paypalpaymentSend = (data) => {
- 
+
         toast("Checkout successfull")
         const formDataMethod = new FormData();
         formDataMethod.append('products', JSON.stringify(cartItems));
@@ -233,15 +233,15 @@ export function Checkout(product) {
         const { token, error } = await stripe.createToken(elements.getElement(CardElement));
 
         if (token) {
- 
+
             paymentSend(token?.id)
 
         } else {
-         }
+        }
     };
 
 
- 
+
     return (
         <>
             <UserLayout>
@@ -595,10 +595,11 @@ export function Checkout(product) {
                                                                     },
                                                                 }}
                                                                 onLoadPaymentData={paymentRequest => {
- 
+
                                                                 }}
                                                             />}
                                                     </div>
+                                                    
                                                     <div className="  mb-4 ">
                                                         <div className={`stripebox p-2 d-flex gap-4 justify-content-between  border ${selectedPayment === 'stripe' ? 'selected' : ''}`}>
                                                             <span className="  d-flex  align-items-center  ">

@@ -43,7 +43,7 @@ export const PrintedModels = () => {
             const data = await Get_all_product(slug);
             // document.querySelector('.loaderBox').classList.add("d-none");
 
-            console.log("adata", data)
+ 
 
             setAll_product(data);
 
@@ -63,6 +63,8 @@ export const PrintedModels = () => {
 
     const [wish, setWish] = useState(false)
 
+
+console.log("wish" , wish)
     const wishdata = async (id) => {
         try {
             const data = await Add_wish(id);
@@ -74,13 +76,13 @@ export const PrintedModels = () => {
 
     const notify = () => toast("Product added successfully");
 
-    console.log("notify", notify)
+ 
     const navigate = useNavigate()
 
-// integerate react strip
+    // integerate react strip
 
     return (
-        <>
+      
             <UserLayout>
 
                 <Banner
@@ -99,19 +101,15 @@ export const PrintedModels = () => {
                         text="Add to cart"
                         status={wish.status}
                         wishClick={() => (wishdata(data?.id), wishlish())}
-                        onClick={() => (dispatch(addToCart(data)), notify(), wishdata(data?.id))}
+                        onClick={() => (dispatch(addToCart(data)), notify())}
                         to={"/productdetail"}
                         viewtext="View Card"
                     />
                 ))}
-
-
-
-
                 <ToastContainer />
 
 
             </UserLayout>
-        </>
+     
     );
 };

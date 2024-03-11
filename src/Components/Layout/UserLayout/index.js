@@ -7,7 +7,7 @@ export const UserLayout = (props) => {
  
   return (
     <>
-      <Header   />
+      <Header/>
       {/* <Sidebar sideclassName={sideBarClass} /> */}
       <div className="mainApp">
         {props.children}

@@ -20,15 +20,15 @@ import './style.css'
 
 export function Cards(props) {
     const LogoutData = localStorage.getItem('login');
- 
-//     const [wishlish, setwishlist] = useState(false)
-// console.log("LogoutDatatoken" , LogoutData )
-//     if (LogoutData) {
-//         setwishlist(true)
-//     }
-//     else {
-//         setwishlist(false)
-//     }
+
+    //     const [wishlish, setwishlist] = useState(false)
+    // console.log("LogoutDatatoken" , LogoutData )
+    //     if (LogoutData) {
+    //         setwishlist(true)
+    //     }
+    //     else {
+    //         setwishlist(false)
+    //     }
     return (
 
         <section className="product_listing_section">
@@ -38,16 +38,12 @@ export function Cards(props) {
                     <div className="col-sm-6 col-lg-5 mb-3 mx-auto">
 
                         <div className="product_img position-relative">
-                            {/* {wishlish === true :  (  <span onClick={props?.addwish} className={props?.status === true ? "whislist      text-primary    " : "whislist  text-secondary  "}><FontAwesomeIcon icon={faHeart} /></span> ) ? " "} */}
+                            
                             {LogoutData && (
-                               
                                 <span onClick={props?.wishClick} className={props?.status === true ? "wishlist text-primary" : "wishlist text-secondary"} id="heart_icon_span">
                                     <FontAwesomeIcon icon={faHeart} />
                                 </span>
-                            ) }
-
-
-                            {/* <span onClick={props?.addwish} className={props?.status === true : "whislist text-secondary"  ? "whislist text-secondary"}><FontAwesomeIcon icon={faHeart} /></span> */}
+                            )}
                             <img src={props.img} className="w-100" alt="" />
                         </div>
 
